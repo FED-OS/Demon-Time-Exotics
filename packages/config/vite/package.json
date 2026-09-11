@@ -1,0 +1,28 @@
+{
+  "name": "@dte/config-vite",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Demon Time Exotics — shared Vite config factories (web, tauri, electron-renderer).",
+  "type": "module",
+  "license": "SEE LICENSE IN LICENSE",
+  "main": "./index.ts",
+  "exports": {
+    ".": "./index.ts",
+    "./web.ts": "./web.ts",
+    "./tauri.ts": "./tauri.ts",
+    "./electron.ts": "./electron.ts",
+    "./package.json": "./package.json"
+  },
+  "files": ["index.ts", "web.ts", "tauri.ts", "electron.ts", "README.md"],
+  "scripts": {
+    "typecheck": "tsc --noEmit",
+    "clean": "rm -rf .turbo"
+  },
+  "dependencies": {
+    "vite": "^5.4.11"
+  },
+  "devDependencies": {
+    "@dte/config-typescript": "workspace:*",
+    "typescript": "^5.6.3"
+  }
+}

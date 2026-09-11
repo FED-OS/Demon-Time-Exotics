@@ -1,0 +1,21 @@
+{
+  "name": "@dte/gen-component",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "description": "Demon Time Exotics — scaffolds a new component folder (component + index barrel entry) into an app or package.",
+  "license": "SEE LICENSE IN LICENSE",
+  "bin": {
+    "dte-gen-component": "./index.js"
+  },
+  "files": [
+    "index.js",
+    "templates/"
+  ],
+  "scripts": {
+    "component": "node index.js"
+  },
+  "engines": {
+    "node": ">=20.0.0"
+  }
+}

@@ -1,0 +1,45 @@
+{
+  "$schema": "https://json.schemastore.org/asset-manifest",
+  "name": "Demon Time Exotics brand assets",
+  "version": "1.0.0",
+  "description": "Manifest of every brand asset shipped in @dte/assets. Consumers should reference these paths (via @dte/assets/*) instead of copying files into apps.",
+  "branding": {
+    "logo": "branding/logo.png",
+    "logoSource": "branding/logo-source.jpg",
+    "socialBanner": "branding/social-banner.png"
+  },
+  "icons": {
+    "favicon": "icons/favicon.ico",
+    "logo16": "icons/logo-16.png",
+    "logo32": "icons/logo-32.png",
+    "logo48": "icons/logo-48.png",
+    "logo64": "icons/logo-64.png",
+    "logo128": "icons/logo-128.png",
+    "logo256": "icons/logo-256.png",
+    "logo512": "icons/logo-512.png",
+    "appleTouch": "icons/logo-180.png",
+    "androidAdaptive": "icons/logo-192.png",
+    "electronIcon": "icons/icon.png",
+    "tauriIcon": "icons/icon.png"
+  },
+  "images": {
+    "heroBackground": "images/hero-bg.png",
+    "socialPreview": "images/social-preview.png",
+    "bannerArt": "images/banner-art.png"
+  },
+  "fonts": {
+    "display": "Bebas Neue (Google Fonts, OFL)",
+    "body": "Inter (Google Fonts, OFL)"
+  },
+  "sizes": {
+    "socialBanner": "1280x640",
+    "socialPreview": "1280x640",
+    "logo": "1024x1024",
+    "favicon.ico": "16/32/48/64 multi-resolution"
+  },
+  "usage": {
+    "githubSocialPreview": "Copy branding/social-banner.png to .github/social-image.png (already done at repo root).",
+    "ogImage": "images/social-preview.png is referenced by apps/landing/index.html og:image.",
+    "appIcons": "Tauri reads src-tauri/icons/icon.png; Electron uses resources/icon.png; Expo uses app.json icon path."
+  }
+}

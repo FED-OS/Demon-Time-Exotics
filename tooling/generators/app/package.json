@@ -1,0 +1,21 @@
+{
+  "name": "@dte/gen-app",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "description": "Demon Time Exotics — scaffolds a brand-new app workspace (package.json, tsconfig, Vite config, src scaffold) into apps/.",
+  "license": "SEE LICENSE IN LICENSE",
+  "bin": {
+    "dte-gen-app": "./index.js"
+  },
+  "files": [
+    "index.js",
+    "templates/"
+  ],
+  "scripts": {
+    "app": "node index.js"
+  },
+  "engines": {
+    "node": ">=20.0.0"
+  }
+}

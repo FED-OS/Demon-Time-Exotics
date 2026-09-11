@@ -1,0 +1,21 @@
+{
+  "name": "@dte/config-tailwind",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Demon Time Exotics — shared Tailwind CSS preset (brand palette, fonts, shadows, animations).",
+  "type": "module",
+  "license": "SEE LICENSE IN LICENSE",
+  "main": "./tailwind.preset.ts",
+  "exports": {
+    ".": "./tailwind.preset.ts",
+    "./tailwind.preset.ts": "./tailwind.preset.ts",
+    "./package.json": "./package.json"
+  },
+  "files": ["tailwind.preset.ts", "README.md"],
+  "scripts": {
+    "clean": "rm -rf .turbo"
+  },
+  "peerDependencies": {
+    "tailwindcss": ">=3.4.0"
+  }
+}

@@ -1,0 +1,26 @@
+{
+  "name": "@dte/assets",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Demon Time Exotics — brand asset library: logos, banners, icons, fonts, hero art.",
+  "type": "module",
+  "license": "SEE LICENSE IN LICENSE",
+  "files": [
+    "branding",
+    "icons",
+    "images",
+    "fonts",
+    "README.md"
+  ],
+  "exports": {
+    "./branding/*": "./branding/*",
+    "./icons/*": "./icons/*",
+    "./images/*": "./images/*",
+    "./fonts/*": "./fonts/*",
+    "./manifest.json": "./manifest.json",
+    "./package.json": "./package.json"
+  },
+  "scripts": {
+    "clean": "rm -rf .turbo"
+  }
+}
