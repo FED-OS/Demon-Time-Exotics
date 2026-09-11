@@ -3,630 +3,610 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
-<meta name="theme-color" content="#050506">
-<title>FED-EDU // Speak The Language</title>
+<meta name="theme-color" content="#0a0000">
+<title>DEMON TIME EXOTICS // The Messy Show</title>
+<meta name="description" content="Raw, unfiltered Hip Hop news, podcast beef & urban entertainment. No scripts. No filters. Just facts, jokes, and real talk.">
 <style>
 :root{
-  --bg:#050506;
-  --ink:#f4f4f7;
-  --dim:#6e6e7a;
-  --green:#00ff88;
-  --gold:#ffd54a;
-  --pink:#ff2e88;
-  --line:#1a1a22;
+  --bg:#0a0000;
+  --bg2:#120404;
+  --card:#150505;
+  --card2:#1c0808;
+  --line:#2a0a0a;
+  --ink:#fff5f5;
+  --dim:#8a7070;
+  --red:#ff0033;
+  --red2:#ff3355;
+  --blood:#c40024;
+  --gold:#ffcc00;
+  --orange:#ff6600;
   --mono:ui-monospace,'SF Mono',Menlo,Consolas,monospace;
   --sans:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,Arial,sans-serif;
+  --display:'Impact','Haettenschweiler','Arial Narrow Bold',sans-serif;
 }
 *{margin:0;padding:0;box-sizing:border-box;-webkit-tap-highlight-color:transparent}
 html{scroll-behavior:smooth}
 body{
   background:var(--bg);color:var(--ink);font-family:var(--sans);
-  overflow-x:hidden;line-height:1.5;
-  -webkit-font-smoothing:antialiased;
+  overflow-x:hidden;line-height:1.5;-webkit-font-smoothing:antialiased;
 }
-::selection{background:var(--green);color:#000}
+::selection{background:var(--red);color:#000}
 ::-webkit-scrollbar{width:8px}
-::-webkit-scrollbar-track{background:#0a0a0e}
-::-webkit-scrollbar-thumb{background:#25252f;border-radius:4px}
-::-webkit-scrollbar-thumb:hover{background:var(--green)}
+::-webkit-scrollbar-track{background:#000}
+::-webkit-scrollbar-thumb{background:var(--red);border-radius:0}
+::-webkit-scrollbar-thumb:hover{background:var(--red2)}
 
-/* grain overlay */
+/* grain */
 body::after{
-  content:'';position:fixed;inset:0;pointer-events:none;z-index:9999;opacity:.035;
-  background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  content:'';position:fixed;inset:0;pointer-events:none;z-index:9998;opacity:.06;
+  background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  mix-blend-mode:overlay;
 }
 
-/* ============ NAV ============ */
+/* ===== NAV ===== */
 nav{
   position:fixed;top:0;left:0;right:0;z-index:100;
   display:flex;align-items:center;justify-content:space-between;
-  padding:18px 24px;
-  mix-blend-mode:difference;
+  padding:14px 22px;
+  background:linear-gradient(180deg,rgba(10,0,0,.95),rgba(10,0,0,.6) 70%,transparent);
+  backdrop-filter:blur(8px);
+  -webkit-backdrop-filter:blur(8px);
 }
-.logo{
-  font-family:var(--mono);font-weight:800;font-size:1rem;
-  letter-spacing:-.5px;color:#fff;
+.brand{
+  font-family:var(--display);font-size:1.15rem;letter-spacing:1px;
+  display:flex;align-items:center;gap:8px;text-transform:uppercase;
 }
-.logo b{color:var(--green)}
-.nav-r{display:flex;gap:24px;font-family:var(--mono);font-size:.78rem;letter-spacing:.5px}
-.nav-r a{color:#fff;text-decoration:none;opacity:.7;transition:.2s}
-.nav-r a:hover{opacity:1}
-@media(max-width:600px){.nav-r{display:none}}
+.brand .emoji{font-size:1.3rem;filter:drop-shadow(0 0 6px var(--red))}
+.brand b{color:var(--red)}
+.nav-links{display:flex;gap:22px;font-family:var(--mono);font-size:.72rem;letter-spacing:1.5px;text-transform:uppercase}
+.nav-links a{color:var(--dim);text-decoration:none;transition:.2s;position:relative}
+.nav-links a:hover{color:var(--red)}
+.nav-links a:hover::after{content:'';position:absolute;bottom:-4px;left:0;right:0;height:2px;background:var(--red)}
+@media(max-width:720px){.nav-links{display:none}}
 
-/* ============ HERO ============ */
+/* ===== HERO ===== */
 .hero{
-  min-height:100svh;
-  display:flex;flex-direction:column;justify-content:center;
-  padding:120px 24px 40px;
-  position:relative;
-  overflow:hidden;
+  min-height:100svh;display:flex;flex-direction:column;justify-content:center;
+  padding:120px 22px 40px;position:relative;overflow:hidden;
 }
 .hero::before{
   content:'';position:absolute;inset:0;z-index:-1;
   background:
-    radial-gradient(circle at 20% 30%,rgba(0,255,136,.12),transparent 45%),
-    radial-gradient(circle at 80% 70%,rgba(255,46,136,.08),transparent 45%),
-    radial-gradient(circle at 50% 100%,rgba(255,213,74,.06),transparent 50%);
-  filter:blur(40px);
+    radial-gradient(circle at 15% 20%,rgba(255,0,51,.22),transparent 40%),
+    radial-gradient(circle at 85% 75%,rgba(255,102,0,.14),transparent 45%),
+    radial-gradient(circle at 50% 50%,rgba(196,0,36,.08),transparent 60%);
 }
-.eyebrow{
-  font-family:var(--mono);font-size:.72rem;letter-spacing:3px;
-  text-transform:uppercase;color:var(--green);
-  margin-bottom:28px;display:flex;align-items:center;gap:12px;
+.hero::after{
+  content:'';position:absolute;inset:0;z-index:-1;opacity:.35;
+  background-image:
+    repeating-linear-gradient(0deg,transparent 0,transparent 3px,rgba(255,0,51,.03) 3px,rgba(255,0,51,.03) 4px);
 }
-.eyebrow::before{
-  content:'';width:32px;height:1px;background:var(--green);
-}
-h1{
-  font-size:clamp(3rem,12vw,9rem);
-  font-weight:900;letter-spacing:-.05em;line-height:.88;
-  margin-bottom:32px;
-}
-h1 .row{display:block;overflow:hidden}
-h1 .row span{display:inline-block;animation:rise .9s cubic-bezier(.2,.7,.2,1) both}
-h1 .row:nth-child(2) span{animation-delay:.1s}
-h1 .row:nth-child(3) span{animation-delay:.2s}
-@keyframes rise{from{transform:translateY(110%)}to{transform:translateY(0)}}
-.grad{
-  background:linear-gradient(90deg,var(--green),var(--gold) 50%,var(--pink));
-  background-size:200% 100%;
-  -webkit-background-clip:text;background-clip:text;
-  -webkit-text-fill-color:transparent;
-  animation:shift 6s ease-in-out infinite;
-}
-@keyframes shift{0%,100%{background-position:0% 50%}50%{background-position:100% 50%}}
-.outline{
-  -webkit-text-stroke:2px var(--ink);
-  color:transparent;
-}
-.hero-sub{
-  max-width:560px;font-size:clamp(1rem,2vw,1.2rem);
-  color:#a8a8b4;line-height:1.6;margin-bottom:40px;
-  animation:rise 1s .4s cubic-bezier(.2,.7,.2,1) both;
-}
-.hero-sub b{color:var(--ink);font-weight:600}
-.hero-sub i{color:var(--green);font-style:normal}
-.scroll-hint{
-  font-family:var(--mono);font-size:.7rem;color:var(--dim);
-  letter-spacing:2px;text-transform:uppercase;
-  display:flex;align-items:center;gap:10px;
-  animation:fade 1.2s .8s both;
-}
-@keyframes fade{from{opacity:0}to{opacity:1}}
-.scroll-hint::after{
-  content:'';width:40px;height:1px;background:var(--dim);
-  animation:stretch 2s ease-in-out infinite;
-}
-@keyframes stretch{0%,100%{width:40px}50%{width:70px}}
-
-/* ============ MARQUEE ============ */
-.marquee{
-  border-top:1px solid var(--line);border-bottom:1px solid var(--line);
-  padding:20px 0;overflow:hidden;
-  background:#08080c;
-  white-space:nowrap;
-}
-.marquee-track{
-  display:inline-flex;gap:48px;padding-right:48px;
-  animation:scroll 60s linear infinite;
-  will-change:transform;
-}
-.marquee-track:hover{animation-play-state:paused}
-@keyframes scroll{to{transform:translateX(-50%)}}
-.mq-item{
-  font-family:var(--mono);font-size:.95rem;font-weight:600;
+.badge-top{
   display:inline-flex;align-items:center;gap:10px;
+  font-family:var(--mono);font-size:.68rem;font-weight:700;
+  letter-spacing:3px;text-transform:uppercase;
+  color:var(--red);border:1px solid var(--red);
+  padding:6px 14px;border-radius:2px;align-self:flex-start;
+  margin-bottom:28px;background:rgba(255,0,51,.06);
+  animation:flicker 4s infinite;
 }
-.mq-item::before{content:'◆';color:var(--green);font-size:.6rem}
-.mq-item em{color:var(--dim);font-style:normal;font-weight:400;font-size:.82rem}
+.badge-top .dot{
+  width:8px;height:8px;border-radius:50%;background:var(--red);
+  box-shadow:0 0 10px var(--red);animation:pulse 1.4s infinite;
+}
+@keyframes pulse{0%,100%{opacity:1}50%{opacity:.3}}
+@keyframes flicker{0%,100%{opacity:1}92%{opacity:1}93%{opacity:.6}94%{opacity:1}}
 
-/* ============ TRANSLATOR ============ */
-.translator{
-  padding:100px 24px;max-width:1000px;margin:0 auto;
+h1{
+  font-family:var(--display);
+  font-size:clamp(3.5rem,14vw,11rem);
+  line-height:.82;letter-spacing:-.02em;
+  text-transform:uppercase;
+  margin-bottom:20px;
+  text-shadow:4px 4px 0 var(--blood),8px 8px 0 rgba(196,0,36,.3);
 }
-.sec-label{
-  font-family:var(--mono);font-size:.7rem;letter-spacing:3px;
-  text-transform:uppercase;color:var(--green);margin-bottom:16px;
-  display:flex;align-items:center;gap:12px;
+h1 .line{display:block;overflow:hidden}
+h1 .line span{display:inline-block;animation:rise .9s cubic-bezier(.2,.7,.2,1) both}
+h1 .line:nth-child(2) span{animation-delay:.1s}
+h1 .line:nth-child(3) span{animation-delay:.2s}
+@keyframes rise{from{transform:translateY(110%)}to{transform:translateY(0)}}
+h1 .red{color:var(--red)}
+h1 .out{
+  -webkit-text-stroke:2px var(--red);
+  color:transparent;
+  text-shadow:none;
 }
-.sec-label::before{content:'//';opacity:.5}
+.tagline{
+  font-family:var(--display);font-size:clamp(1rem,2.6vw,1.5rem);
+  letter-spacing:.5px;color:var(--ink);opacity:.9;
+  margin-bottom:28px;text-transform:uppercase;
+  animation:rise 1s .35s cubic-bezier(.2,.7,.2,1) both;
+}
+.tagline .hi{color:var(--red);text-shadow:0 0 20px rgba(255,0,51,.6)}
+.hero-p{
+  max-width:620px;font-size:clamp(.95rem,2vw,1.05rem);
+  color:#c4a8a8;line-height:1.65;margin-bottom:36px;
+  animation:rise 1s .45s cubic-bezier(.2,.7,.2,1) both;
+}
+.hero-p b{color:var(--ink);font-weight:700}
+.hero-p .hl{color:var(--gold);font-weight:700}
+.cta-row{
+  display:flex;gap:12px;flex-wrap:wrap;
+  animation:rise 1s .55s cubic-bezier(.2,.7,.2,1) both;
+}
+.btn{
+  display:inline-flex;align-items:center;gap:10px;
+  font-family:var(--display);font-size:1rem;letter-spacing:1px;
+  text-transform:uppercase;padding:16px 28px;
+  text-decoration:none;cursor:pointer;border:none;
+  transition:transform .18s,box-shadow .25s,background .2s;
+  border-radius:2px;position:relative;
+}
+.btn-red{
+  background:var(--red);color:#000;
+  box-shadow:4px 4px 0 var(--blood),0 0 40px rgba(255,0,51,.4);
+}
+.btn-red:hover{transform:translate(-2px,-2px);box-shadow:6px 6px 0 var(--blood),0 0 60px rgba(255,0,51,.6)}
+.btn-ghost{
+  background:transparent;color:var(--ink);
+  border:2px solid var(--red);
+}
+.btn-ghost:hover{background:var(--red);color:#000;box-shadow:0 0 30px rgba(255,0,51,.4)}
+
+/* ===== TICKER ===== */
+.ticker{
+  background:var(--red);color:#000;
+  overflow:hidden;padding:14px 0;white-space:nowrap;
+  border-top:2px solid var(--blood);border-bottom:2px solid var(--blood);
+  position:relative;z-index:2;
+}
+.ticker-track{
+  display:inline-flex;gap:40px;padding-right:40px;
+  animation:scrollX 45s linear infinite;
+  font-family:var(--display);font-size:1.1rem;letter-spacing:1.5px;
+  text-transform:uppercase;
+}
+.ticker:hover .ticker-track{animation-play-state:paused}
+@keyframes scrollX{to{transform:translateX(-50%)}}
+.ticker-track span{display:inline-flex;align-items:center;gap:12px}
+.ticker-track span::before{content:'⚠';font-size:1rem}
+
+/* ===== SECTION BASE ===== */
+section{padding:90px 22px;max-width:1200px;margin:0 auto}
+.sec-tag{
+  font-family:var(--mono);font-size:.68rem;font-weight:700;
+  letter-spacing:3px;text-transform:uppercase;color:var(--red);
+  margin-bottom:14px;display:inline-flex;align-items:center;gap:10px;
+}
+.sec-tag::before{content:'▮';color:var(--red)}
 h2{
-  font-size:clamp(2rem,6vw,4rem);font-weight:900;
-  letter-spacing:-.04em;line-height:.95;margin-bottom:20px;
-}
-h2 .g{color:var(--green)}
-h2 .y{color:var(--gold)}
-.sec-desc{color:#8a8a96;max-width:520px;font-size:1rem;margin-bottom:48px}
-
-.translate-box{
-  background:#0a0a0e;border:1px solid var(--line);
-  border-radius:20px;padding:8px;
-  position:relative;overflow:hidden;
-}
-.translate-box::before{
-  content:'';position:absolute;inset:-2px;z-index:0;border-radius:22px;
-  background:linear-gradient(135deg,var(--green),var(--gold),var(--pink),var(--green));
-  background-size:400% 400%;
-  animation:shift2 8s linear infinite;
-  opacity:.6;filter:blur(8px);
-}
-@keyframes shift2{0%{background-position:0% 50%}100%{background-position:400% 50%}}
-.translate-inner{
-  position:relative;z-index:1;
-  background:#0a0a0e;border-radius:14px;
-  padding:28px;
-}
-.translate-row{
-  display:flex;align-items:center;gap:14px;flex-wrap:wrap;
-  font-family:var(--mono);font-size:.75rem;color:var(--dim);
+  font-family:var(--display);font-size:clamp(2rem,6vw,4.5rem);
+  letter-spacing:-.01em;line-height:.92;text-transform:uppercase;
   margin-bottom:16px;
 }
-.mode-btn{
-  font-family:var(--mono);font-size:.72rem;font-weight:700;
-  padding:6px 14px;border-radius:100px;
-  background:transparent;border:1px solid var(--line);
-  color:var(--dim);cursor:pointer;transition:.2s;
-}
-.mode-btn.active{background:var(--green);color:#001a0d;border-color:var(--green)}
-#tinput{
-  width:100%;background:transparent;border:none;outline:none;
-  font-size:clamp(1.4rem,4vw,2rem);font-weight:800;
-  color:var(--ink);font-family:var(--sans);letter-spacing:-.02em;
-  padding:8px 0;
-}
-#tinput::placeholder{color:#2a2a35}
-.result{
-  margin-top:24px;padding-top:24px;border-top:1px dashed var(--line);
-  min-height:120px;
-}
-.res-card{
-  display:flex;align-items:baseline;gap:16px;flex-wrap:wrap;
-  animation:pop .3s ease both;
-}
-@keyframes pop{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
-.res-sl{
-  font-size:clamp(1.6rem,5vw,2.6rem);font-weight:900;
-  letter-spacing:-.03em;color:var(--green);line-height:1;
-}
-.res-ar{font-size:1.6rem;color:var(--dim)}
-.res-rl{
-  font-family:var(--mono);font-size:clamp(1rem,2.5vw,1.3rem);
-  color:var(--gold);font-weight:600;
-}
-.res-use{
-  margin-top:16px;font-style:italic;color:#9a9aa6;
-  font-size:.95rem;line-height:1.6;
-  border-left:2px solid var(--green);padding-left:16px;
-}
-.res-hint{color:var(--dim);font-family:var(--mono);font-size:.85rem}
-.res-multi{
-  display:flex;flex-wrap:wrap;gap:8px;margin-top:12px;
-}
-.res-chip{
-  font-family:var(--mono);font-size:.75rem;
-  padding:6px 12px;border-radius:100px;
-  background:#12121a;border:1px solid var(--line);
-  color:#b8b8c4;cursor:pointer;transition:.15s;
-}
-.res-chip:hover{border-color:var(--green);color:var(--green)}
+h2 .red{color:var(--red);text-shadow:0 0 30px rgba(255,0,51,.4)}
+h2 .out{-webkit-text-stroke:2px var(--ink);color:transparent}
+.sec-desc{color:#a88888;max-width:560px;font-size:1rem;margin-bottom:44px;line-height:1.65}
 
-/* ============ FEATURED CARDS ============ */
-.featured{padding:80px 24px;max-width:1200px;margin:0 auto}
-.reveal{opacity:0;transform:translateY(40px);transition:opacity .7s cubic-bezier(.2,.7,.2,1),transform .7s cubic-bezier(.2,.7,.2,1)}
+/* ===== STATS ===== */
+.stats-bar{
+  display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));
+  background:var(--card);border:1px solid var(--line);
+  margin:0 22px;max-width:1200px;margin-left:auto;margin-right:auto;
+  position:relative;z-index:2;
+}
+.stat{
+  padding:28px 20px;text-align:center;
+  border-right:1px solid var(--line);
+  position:relative;
+}
+.stat:last-child{border-right:none}
+.stat::before{
+  content:'';position:absolute;top:0;left:20%;right:20%;height:2px;
+  background:var(--red);opacity:0;transition:.3s;
+}
+.stat:hover::before{opacity:1;left:0;right:0}
+.stat .num{
+  font-family:var(--display);font-size:clamp(1.6rem,4vw,2.4rem);
+  color:var(--red);line-height:1;display:block;
+  text-shadow:0 0 20px rgba(255,0,51,.3);
+}
+.stat .lbl{
+  font-family:var(--mono);font-size:.66rem;letter-spacing:2px;
+  text-transform:uppercase;color:var(--dim);
+  margin-top:10px;display:block;
+}
+@media(max-width:640px){.stat{border-right:none;border-bottom:1px solid var(--line)}}
+
+/* ===== PILLARS ===== */
+.pillars{
+  display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));
+  gap:14px;
+}
+.pillar{
+  background:var(--card);border:1px solid var(--line);
+  padding:26px 22px;position:relative;overflow:hidden;
+  transition:transform .25s cubic-bezier(.2,.7,.2,1),border-color .25s;
+  border-radius:2px;
+}
+.pillar::before{
+  content:'';position:absolute;top:0;left:0;width:4px;height:100%;
+  background:var(--red);transform:scaleY(0);transform-origin:top;
+  transition:transform .3s;
+}
+.pillar:hover{transform:translate(-3px,-3px);border-color:var(--red);box-shadow:6px 6px 0 rgba(196,0,36,.3)}
+.pillar:hover::before{transform:scaleY(1)}
+.pillar-num{
+  font-family:var(--display);font-size:2.4rem;color:var(--blood);
+  line-height:1;margin-bottom:12px;opacity:.6;
+}
+.pillar h3{
+  font-family:var(--display);font-size:1.3rem;
+  letter-spacing:.5px;text-transform:uppercase;
+  margin-bottom:10px;color:var(--ink);
+}
+.pillar h3 .hl{color:var(--red)}
+.pillar p{color:#a88888;font-size:.9rem;line-height:1.6}
+
+/* ===== PLATFORMS ===== */
+.platforms{
+  display:grid;grid-template-columns:repeat(auto-fill,minmax(180px,1fr));
+  gap:10px;
+}
+.plat{
+  background:var(--card2);border:1px solid var(--line);
+  padding:22px 18px;text-decoration:none;color:inherit;
+  transition:.25s;position:relative;overflow:hidden;
+  border-radius:2px;display:flex;flex-direction:column;gap:8px;
+}
+.plat::after{
+  content:'→';position:absolute;bottom:14px;right:16px;
+  font-family:var(--display);color:var(--red);font-size:1.2rem;
+  opacity:0;transform:translateX(-8px);transition:.25s;
+}
+.plat:hover{border-color:var(--red);background:#1f0707;transform:translateY(-3px)}
+.plat:hover::after{opacity:1;transform:translateX(0)}
+.plat-icon{font-size:1.6rem;line-height:1}
+.plat-name{
+  font-family:var(--display);font-size:1rem;letter-spacing:1px;
+  text-transform:uppercase;
+}
+.plat-handle{font-family:var(--mono);font-size:.72rem;color:var(--dim)}
+
+/* ===== MESSY SHOW ===== */
+.messy{
+  background:linear-gradient(135deg,#150404 0%,#0a0000 50%,#150404 100%);
+  border:2px solid var(--red);padding:50px 30px;
+  text-align:center;position:relative;overflow:hidden;
+  border-radius:2px;
+}
+.messy::before{
+  content:'';position:absolute;inset:0;z-index:0;opacity:.15;
+  background-image:
+    repeating-linear-gradient(45deg,var(--red) 0,var(--red) 1px,transparent 1px,transparent 12px);
+}
+.messy > *{position:relative;z-index:1}
+.messy h2{font-size:clamp(2rem,7vw,5rem);margin-bottom:18px}
+.messy h2 .red{display:block}
+.messy p{color:#c4a8a8;max-width:600px;margin:0 auto 30px;font-size:1.05rem}
+.messy .hashtag{
+  font-family:var(--display);font-size:clamp(1.2rem,3vw,2rem);
+  letter-spacing:2px;color:var(--gold);text-transform:uppercase;
+  margin-top:28px;display:inline-block;
+  animation:shake 3s infinite;
+}
+@keyframes shake{0%,100%{transform:translateX(0)}25%{transform:translateX(-2px)}75%{transform:translateX(2px)}}
+
+/* ===== REPO ===== */
+.repo{
+  background:var(--card);border:1px solid var(--line);
+  padding:30px;border-radius:2px;font-family:var(--mono);
+  font-size:.85rem;color:#c4a8a8;line-height:1.7;
+  overflow-x:auto;
+}
+.repo .c{color:var(--dim)}
+.repo .k{color:var(--red);font-weight:700}
+.repo .g{color:var(--gold)}
+
+/* ===== SUPPORT ===== */
+.support-grid{
+  display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));
+  gap:14px;margin-top:20px;
+}
+.sup{
+  background:var(--card2);border:1px solid var(--line);
+  padding:26px 22px;text-decoration:none;color:inherit;
+  transition:.25s;border-radius:2px;
+  display:flex;flex-direction:column;gap:8px;
+}
+.sup:hover{border-color:var(--gold);transform:translateY(-4px);box-shadow:0 10px 40px rgba(255,204,0,.1)}
+.sup-icon{font-size:1.8rem;line-height:1}
+.sup-title{font-family:var(--display);font-size:1.05rem;letter-spacing:1px;text-transform:uppercase}
+.sup-sub{font-family:var(--mono);font-size:.72rem;color:var(--dim)}
+.sup.primary{border-color:var(--red)}
+.sup.primary:hover{box-shadow:0 10px 40px rgba(255,0,51,.15)}
+
+/* ===== FOOTER ===== */
+footer{
+  border-top:2px solid var(--line);
+  padding:44px 22px;text-align:center;
+  font-family:var(--mono);font-size:.75rem;color:var(--dim);
+  background:#050000;
+}
+footer .foot-brand{
+  font-family:var(--display);font-size:1.3rem;
+  letter-spacing:2px;text-transform:uppercase;
+  margin-bottom:12px;color:var(--ink);
+}
+footer .foot-brand b{color:var(--red)}
+footer .foot-tag{
+  font-family:var(--display);font-size:1rem;
+  letter-spacing:1px;color:var(--red);margin-bottom:16px;
+  text-transform:uppercase;
+}
+footer .copyright{margin-top:16px;font-size:.68rem;letter-spacing:1px}
+
+/* scroll reveal */
+.reveal{opacity:0;transform:translateY(36px);transition:opacity .7s cubic-bezier(.2,.7,.2,1),transform .7s cubic-bezier(.2,.7,.2,1)}
 .reveal.on{opacity:1;transform:none}
 
-.card-grid{
-  display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));
-  gap:16px;
-}
-.big-card{
-  background:#0a0a0e;border:1px solid var(--line);
-  border-radius:16px;padding:26px 22px;
-  position:relative;overflow:hidden;
-  transition:transform .3s cubic-bezier(.2,.7,.2,1),border-color .3s;
-  cursor:default;
-}
-.big-card:hover{transform:translateY(-4px) scale(1.01);border-color:#33333f}
-.big-card::before{
-  content:'';position:absolute;top:0;left:0;right:0;height:3px;
-  background:linear-gradient(90deg,var(--green),var(--gold));
-  transform:scaleX(0);transform-origin:left;transition:transform .4s;
-}
-.big-card:hover::before{transform:scaleX(1)}
-.bc-tag{
-  font-family:var(--mono);font-size:.62rem;letter-spacing:2px;
-  text-transform:uppercase;color:var(--green);opacity:.8;
-  margin-bottom:14px;display:block;
-}
-.bc-slang{
-  font-size:1.5rem;font-weight:900;letter-spacing:-.02em;
-  margin-bottom:6px;line-height:1.1;
-}
-.bc-real{
-  font-family:var(--mono);font-size:.8rem;color:var(--gold);
-  margin-bottom:16px;
-}
-.bc-use{
-  font-size:.86rem;color:#8a8a96;line-height:1.55;
-  font-style:italic;
-}
-
-/* ============ CATEGORIES ============ */
-.cats-sec{padding:80px 24px;max-width:1200px;margin:0 auto}
-.cat-grid{
-  display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));
-  gap:12px;
-}
-.cat{
-  background:#0a0a0e;border:1px solid var(--line);
-  border-radius:14px;padding:22px 18px;
-  transition:.25s;position:relative;overflow:hidden;
-}
-.cat:hover{border-color:var(--green);transform:translateY(-3px)}
-.cat:hover .c-emoji{transform:scale(1.2) rotate(-8deg)}
-.c-emoji{
-  font-size:1.8rem;display:block;margin-bottom:12px;
-  transition:transform .3s cubic-bezier(.2,.7,.2,1);
-  transform-origin:left center;
-}
-.c-name{font-weight:800;font-size:1rem;letter-spacing:-.01em;margin-bottom:4px}
-.c-real{font-family:var(--mono);font-size:.72rem;color:var(--dim)}
-
-/* ============ RULE ============ */
-.rule-sec{
-  padding:120px 24px;text-align:center;
-  position:relative;overflow:hidden;
-  border-top:1px solid var(--line);border-bottom:1px solid var(--line);
-  background:
-    radial-gradient(circle at 50% 50%,rgba(0,255,136,.06),transparent 60%);
-}
-.rule-big{
-  font-size:clamp(1.8rem,6vw,4rem);font-weight:900;
-  letter-spacing:-.04em;line-height:1.05;
-  max-width:900px;margin:0 auto 24px;
-}
-.rule-big .g{color:var(--green)}
-.rule-big .y{color:var(--gold)}
-.rule-p{
-  color:#8a8a96;max-width:520px;margin:0 auto;
-  font-size:1rem;line-height:1.6;
-}
-.rule-p b{color:var(--ink)}
-
-/* ============ CTA ============ */
-.cta-sec{padding:100px 24px;text-align:center;max-width:800px;margin:0 auto}
-.cta-btn{
-  display:inline-flex;align-items:center;gap:12px;
-  font-family:var(--mono);font-size:.9rem;font-weight:700;
-  padding:18px 32px;border-radius:100px;
-  background:var(--green);color:#001a0d;
-  text-decoration:none;border:none;cursor:pointer;
-  transition:transform .2s,box-shadow .3s;
-  box-shadow:0 0 40px rgba(0,255,136,.25);
-}
-.cta-btn:hover{transform:translateY(-3px);box-shadow:0 0 60px rgba(0,255,136,.5)}
-.cta-btn::after{content:'→';transition:transform .2s}
-.cta-btn:hover::after{transform:translateX(4px)}
-
-/* ============ FOOTER ============ */
-footer{
-  border-top:1px solid var(--line);
-  padding:40px 24px;text-align:center;
-  font-family:var(--mono);font-size:.75rem;color:var(--dim);
-}
-footer .logo{justify-content:center;margin-bottom:12px;display:block}
-footer a{color:var(--green);text-decoration:none}
-
-@media(max-width:600px){
-  .translate-inner{padding:20px}
-  .hero{padding:100px 20px 30px}
+@media(max-width:520px){
+  h1{text-shadow:3px 3px 0 var(--blood)}
+  .btn{padding:14px 22px;font-size:.9rem}
+  .messy{padding:40px 20px}
 }
 </style>
 </head>
 <body>
 
 <nav>
-  <div class="logo">FED<b>-EDU</b></div>
-  <div class="nav-r">
-    <a href="#translate">Translate</a>
-    <a href="#terms">Terms</a>
-    <a href="#rooms">Rooms</a>
+  <div class="brand">
+    <span class="emoji">😈</span>
+    DTE <b>EXOTICS</b>
+  </div>
+  <div class="nav-links">
+    <a href="#pillars">Content</a>
+    <a href="#platforms">Platforms</a>
+    <a href="#support">Support</a>
   </div>
 </nav>
 
 <!-- HERO -->
-<section class="hero">
-  <div class="eyebrow">FED-OS × fedpromptly</div>
+<header class="hero">
+  <div class="badge-top"><span class="dot"></span>LIVE // LOS ANGELES, CA</div>
   <h1>
-    <span class="row"><span>Speak</span></span>
-    <span class="row"><span class="grad">The Language.</span></span>
-    <span class="row"><span class="outline">Own The Code.</span></span>
+    <span class="line"><span>DEMON</span></span>
+    <span class="line"><span class="red">TIME</span></span>
+    <span class="line"><span class="out">EXOTICS</span></span>
   </h1>
-  <p class="hero-sub">
-    AI, coding, and tech explained in <i>the language we actually speak</i>.
-    <b>Slang opens the door. Real terms get you paid.</b>
-    A beginner-first space for all Black men — every flag, every block, every background.
+  <div class="tagline">The <span class="hi">Messy Show</span> · No Scripts · No Filters</div>
+  <p class="hero-p">
+    The rawest, most unfiltered voice in <b>Hip Hop News</b>, <b>Podcast Beef</b> &amp; <b>Urban Entertainment</b>.
+    Covering viral drama, street politics, and industry controversies across
+    <span class="hl">Los Angeles, Compton, South Central &amp; the West Coast</span>.
+    If it's trending, controversial, or shaking the culture — we cover it <b>FIRST</b>. 🗣️
   </p>
-  <div class="scroll-hint">Scroll to translate</div>
-</section>
+  <div class="cta-row">
+    <a href="https://youtube.com/@DTEMONEY448" class="btn btn-red" target="_blank" rel="noopener">▶ Subscribe</a>
+    <a href="#pillars" class="btn btn-ghost">What We Cover</a>
+  </div>
+</header>
 
-<!-- MARQUEE -->
-<div class="marquee" aria-hidden="true">
-  <div class="marquee-track" id="mq"></div>
+<!-- TICKER -->
+<div class="ticker" aria-hidden="true">
+  <div class="ticker-track" id="tk"></div>
 </div>
 
-<!-- TRANSLATOR -->
-<section class="translator" id="translate">
-  <div class="sec-label reveal">The Translator</div>
-  <h2 class="reveal">Type a word.<br>Get <span class="g">both languages.</span></h2>
-  <p class="sec-desc reveal">Slang or corporate — we translate both ways. Try "plug", "API", "stash", or hit the button for a random one.</p>
+<!-- STATS -->
+<div class="stats-bar">
+  <div class="stat"><span class="num" data-count="21200" data-suffix="K+">0</span><span class="lbl">Subscribers</span></div>
+  <div class="stat"><span class="num" data-count="406">0</span><span class="lbl">Total Videos</span></div>
+  <div class="stat"><span class="num" data-count="3025509">0</span><span class="lbl">Total Views</span></div>
+  <div class="stat"><span class="num">2022</span><span class="lbl">Est. Sep 28</span></div>
+</div>
 
-  <div class="translate-box reveal">
-    <div class="translate-inner">
-      <div class="translate-row">
-        <button class="mode-btn active" data-mode="auto">AUTO</button>
-        <button class="mode-btn" data-mode="slang">STREET → REAL</button>
-        <button class="mode-btn" data-mode="real">REAL → STREET</button>
-        <button class="mode-btn" id="randBtn">🎲 RANDOM</button>
-      </div>
-      <input id="tinput" type="text" placeholder="Type 'plug' or 'API'…" autocomplete="off" spellcheck="false">
-      <div class="result" id="result">
-        <div class="res-hint">Start typing to translate →</div>
-      </div>
+<!-- PILLARS -->
+<section id="pillars">
+  <div class="sec-tag reveal">Content Pillars</div>
+  <h2 class="reveal">WHAT WE <span class="red">COVER</span></h2>
+  <p class="sec-desc reveal">Six lanes. Zero filter. Every story broken down raw.</p>
+  <div class="pillars">
+    <div class="pillar reveal">
+      <div class="pillar-num">01</div>
+      <h3>Hip Hop News <span class="hl">&amp; Drama</span></h3>
+      <p>Viral beefs, feuds, and controversies broken down FIRST. If the culture is talking, we already got the clip.</p>
+    </div>
+    <div class="pillar reveal">
+      <div class="pillar-num">02</div>
+      <h3>No Jumper <span class="hl">Chaos</span></h3>
+      <p>Adam22, Wack 100, and everything adjacent. The platform drama that keeps the timeline on fire.</p>
+    </div>
+    <div class="pillar reveal">
+      <div class="pillar-num">03</div>
+      <h3>Podcast <span class="hl">Beef</span></h3>
+      <p>Conflicts between podcasters and personalities. Every clip, every receipt, every reaction.</p>
+    </div>
+    <div class="pillar reveal">
+      <div class="pillar-num">04</div>
+      <h3>Street <span class="hl">Politics</span></h3>
+      <p>Compton, South Central &amp; West Coast hip hop dynamics. The real geography behind the music.</p>
+    </div>
+    <div class="pillar reveal">
+      <div class="pillar-num">05</div>
+      <h3>Industry <span class="hl">Exposés</span></h3>
+      <p>Alleged backdoor deals, snitching allegations, scandals. The stories the mainstream won't touch.</p>
+    </div>
+    <div class="pillar reveal">
+      <div class="pillar-num">06</div>
+      <h3>Live Streams <span class="hl">&amp; Reactions</span></h3>
+      <p>Daily unfiltered coverage of breaking drama. Pull up live and get the raw take, uncut.</p>
     </div>
   </div>
 </section>
 
-<!-- FEATURED -->
-<section class="featured" id="terms">
-  <div class="sec-label reveal">The Essentials</div>
-  <h2 class="reveal">Every term.<br><span class="y">Both languages.</span></h2>
-  <p class="sec-desc reveal">The core vocabulary. Learn it, use it, teach it to the next brother.</p>
-  <div class="card-grid" id="featured"></div>
-</section>
-
-<!-- CATEGORIES -->
-<section class="cats-sec" id="rooms">
-  <div class="sec-label reveal">The Corner</div>
-  <h2 class="reveal">The Rooms.</h2>
-  <p class="sec-desc reveal">Every Discussion category has a street name and a real purpose.</p>
-  <div class="cat-grid" id="cats"></div>
-</section>
-
-<!-- RULE -->
-<section class="rule-sec">
-  <div class="rule-big reveal">
-    Slang opens the door.<br>
-    <span class="g">Real terms get you paid.</span>
+<!-- MESSY SHOW -->
+<section>
+  <div class="messy reveal">
+    <div class="sec-tag" style="justify-content:center;display:inline-flex">The Messy Show</div>
+    <h2>THE <span class="red">MESSY</span> SHOW</h2>
+    <p>No scripts. No filters. Just facts, jokes, and real talk. Every drop hits harder than the last.</p>
+    <a href="https://youtube.com/@DTEMONEY448" class="btn btn-red" target="_blank" rel="noopener">▶ Watch Now</a>
+    <div class="hashtag">#DEMONTIMEEXOTICS</div>
   </div>
-  <p class="rule-p reveal">
-    Always pair it. <b>"The Plug (API)"</b> — never just "The Plug" forever.
-    Beginners feel at home, and they still learn the language that gets them hired.
-  </p>
 </section>
 
-<!-- CTA -->
-<section class="cta-sec">
-  <h2 class="reveal">Ready to <span class="g">build?</span></h2>
-  <p class="sec-desc reveal" style="margin:0 auto 32px">Pull up to the Corner. Drop your flag. Find your crew.</p>
-  <a href="#" class="cta-btn reveal">Enter The Block</a>
+<!-- PLATFORMS -->
+<section id="platforms">
+  <div class="sec-tag reveal">Official Links</div>
+  <h2 class="reveal">TAP <span class="red">IN</span></h2>
+  <p class="sec-desc reveal">Every platform. Every handle. Subscribe, follow, and turn on ALL alerts 🔔</p>
+  <div class="platforms">
+    <a class="plat reveal" href="https://youtube.com/@DTEMONEY448" target="_blank" rel="noopener">
+      <div class="plat-icon">🎬</div>
+      <div class="plat-name">YouTube Main</div>
+      <div class="plat-handle">@DTEMONEY448</div>
+    </a>
+    <a class="plat reveal" href="https://youtube.com/@dteclips" target="_blank" rel="noopener">
+      <div class="plat-icon">📼</div>
+      <div class="plat-name">YouTube Backup</div>
+      <div class="plat-handle">@dteclips</div>
+    </a>
+    <a class="plat reveal" href="https://instagram.com/dtemoney448" target="_blank" rel="noopener">
+      <div class="plat-icon">📸</div>
+      <div class="plat-name">Instagram</div>
+      <div class="plat-handle">@dtemoney448</div>
+    </a>
+    <a class="plat reveal" href="https://twitch.tv/dtemoney448" target="_blank" rel="noopener">
+      <div class="plat-icon">🎮</div>
+      <div class="plat-name">Twitch</div>
+      <div class="plat-handle">dtemoney448</div>
+    </a>
+    <a class="plat reveal" href="https://shopdemontimeexotics.com" target="_blank" rel="noopener">
+      <div class="plat-icon">👕</div>
+      <div class="plat-name">Merch</div>
+      <div class="plat-handle">shopdemontimeexotics.com</div>
+    </a>
+    <a class="plat reveal" href="mailto:Bigmoney@demontimeexotics.com">
+      <div class="plat-icon">✉️</div>
+      <div class="plat-name">Business</div>
+      <div class="plat-handle">Bigmoney@demontimeexotics.com</div>
+    </a>
+  </div>
+</section>
+
+<!-- SUPPORT -->
+<section id="support">
+  <div class="sec-tag reveal">Support The Movement</div>
+  <h2 class="reveal">THE SHADOWBAN IS <span class="red">REAL</span></h2>
+  <p class="sec-desc reveal">Tap in. Every like, comment, and share counts. Keep the show independent.</p>
+  <div class="support-grid">
+    <a class="sup primary reveal" href="https://ko-fi.com" target="_blank" rel="noopener">
+      <div class="sup-icon">☕</div>
+      <div class="sup-title">Buy Me a Coffee</div>
+      <div class="sup-sub">ko-fi.com</div>
+    </a>
+    <a class="sup reveal" href="https://youtube.com/@DTEMONEY448" target="_blank" rel="noopener">
+      <div class="sup-icon">🔔</div>
+      <div class="sup-title">Subscribe</div>
+      <div class="sup-sub">Turn on ALL alerts</div>
+    </a>
+    <a class="sup reveal" href="https://youtube.com/@DTEMONEY448" target="_blank" rel="noopener">
+      <div class="sup-icon">💎</div>
+      <div class="sup-title">Become a Member</div>
+      <div class="sup-sub">Join the movement</div>
+    </a>
+    <a class="sup reveal" href="https://shopdemontimeexotics.com" target="_blank" rel="noopener">
+      <div class="sup-icon">👕</div>
+      <div class="sup-title">Cop the Merch</div>
+      <div class="sup-sub">shopdemontimeexotics.com</div>
+    </a>
+  </div>
+</section>
+
+<!-- REPO -->
+<section>
+  <div class="sec-tag reveal">Under The Hood</div>
+  <h2 class="reveal">ONE REPO. EVERY <span class="red">PLATFORM.</span></h2>
+  <p class="sec-desc reveal">The entire DTE digital ecosystem lives in one monorepo — landing site, desktop, mobile.</p>
+  <div class="repo reveal">
+<span class="c"># DTE Monorepo</span>
+<span class="k">apps/</span>
+  <span class="c">├──</span> landing/     <span class="g"># 🌐 GitHub Pages site</span>
+  <span class="c">├──</span> tauri/       <span class="g"># 🖥️ Tauri 2 + Rust desktop</span>
+  <span class="c">├──</span> electron/    <span class="g"># 🖥️ Electron 33 desktop</span>
+  <span class="c">└──</span> mobile/      <span class="g"># 📱 Expo / React Native</span>
+<span class="k">packages/</span>
+  <span class="c">├──</span> ui/          <span class="g"># Shared components</span>
+  <span class="c">├──</span> core/        <span class="g"># API, stores, types</span>
+  <span class="c">├──</span> shared/      <span class="g"># Constants &amp; helpers</span>
+  <span class="c">└──</span> assets/      <span class="g"># Branding, fonts, icons</span>
+  </div>
 </section>
 
 <footer>
-  <span class="logo">FED<b>-EDU</b></span>
-  Real-life Minecraft. Pick up a block. Build something. We all eat.
+  <div class="foot-brand">DEMON TIME <b>EXOTICS</b></div>
+  <div class="foot-tag">💪🏾😈🔥 No scripts. No filters. Just facts, jokes, and real talk. 🔥😈💪🏾</div>
+  <div>© 2025 · Los Angeles, California 🌴</div>
+  <div class="copyright">DTEMONEY448 · All Rights Reserved</div>
 </footer>
 
 <script>
-/* ====== DATA ====== */
-const T = [
-  {s:"The Brain",r:"AI model",c:"AI",u:"The Brain gotta eat good data before it can think right."},
-  {s:"Let it cook",r:"Run the model",c:"AI",u:"Drop the prompt and let it cook."},
-  {s:"The Homie",r:"AI agent",c:"AI",u:"Set the Homie to watch sneaker prices all night."},
-  {s:"The Word",r:"Prompt",c:"AI",u:"Give the Brain the right Word and it'll do the job."},
-  {s:"Capping",r:"Hallucination",c:"AI",u:"The Brain might be capping. Double-check the facts."},
-  {s:"The Playbook",r:"Code",c:"Code",u:"Write the Playbook so the machine knows the plays."},
-  {s:"The Blueprint",r:"Repo / template",c:"Code",u:"Fork the Blueprint and make it yours."},
-  {s:"The Bones",r:"HTML",c:"Code",u:"The Bones hold the page together."},
-  {s:"The Fit",r:"CSS",c:"Code",u:"The Fit makes it look clean."},
-  {s:"The Moves",r:"JavaScript",c:"Code",u:"The Moves make the page react when you click."},
-  {s:"The Engine",r:"Backend",c:"Code",u:"The Engine handles the logic and the stash."},
-  {s:"The Face",r:"Frontend",c:"Code",u:"The Face is what the people see."},
-  {s:"The Glitch",r:"Bug",c:"Code",u:"There's a Glitch in the Playbook."},
-  {s:"The Patch",r:"Fix",c:"Code",u:"Push the Patch and the Glitch gone."},
-  {s:"The Block",r:"GitHub org",c:"GitHub",u:"Welcome to the Block."},
-  {s:"The Corner",r:"Discussions",c:"GitHub",u:"Pull up to the Corner and introduce yourself."},
-  {s:"The Showcase",r:"Show and tell",c:"GitHub",u:"Post your build in the Showcase."},
-  {s:"Run it up",r:"Fork",c:"GitHub",u:"Run it up to your own Block."},
-  {s:"Lock it in",r:"Commit",c:"GitHub",u:"Lock it in before you push."},
-  {s:"The Co-sign",r:"Pull request",c:"GitHub",u:"Open a Co-sign so we can check your work."},
-  {s:"The Dap",r:"Star / upvote",c:"GitHub",u:"Give him a Dap for helping."},
-  {s:"The Plug",r:"API",c:"Web",u:"The Plug feed data into your app."},
-  {s:"The Door",r:"Endpoint",c:"Web",u:"Hit the Door and send your request."},
-  {s:"The Passcode",r:"API key",c:"Web",u:"Don't leak your Passcode."},
-  {s:"The ID Check",r:"Authentication",c:"Web",u:"The ID Check keep strangers out."},
-  {s:"The Turf",r:"Domain",c:"Web",u:"That Turf yours. Build on it."},
-  {s:"The Spot",r:"Hosting",c:"Web",u:"GitHub Pages is a free Spot."},
-  {s:"The Live Line",r:"WebSocket",c:"Web",u:"The Live Line keep chat open both ways."},
-  {s:"The Stash House",r:"Database",c:"Data",u:"Store the data in the Stash House."},
-  {s:"The Grid",r:"Table",c:"Data",u:"The Grid hold all the records."},
-  {s:"The Record",r:"Row",c:"Data",u:"Each Record is one player."},
-  {s:"The Link Up",r:"Join",c:"Data",u:"Link the two Grids together."},
-  {s:"The Lock",r:"Encryption",c:"Security",u:"The Lock scramble the message."},
-  {s:"The Keys",r:"Credentials",c:"Security",u:"Guard your Keys."},
-  {s:"The Double Lock",r:"2FA",c:"Security",u:"Turn on the Double Lock."},
-  {s:"The Whip",r:"Computer",c:"Setup",u:"My Whip old but it run."},
-  {s:"The Old Whip",r:"Low-spec PC",c:"Setup",u:"The Old Whip still work with FED-OS."},
-  {s:"The Cord",r:"USB tether",c:"Setup",u:"Plug in the Cord and share the signal."},
-  {s:"The Signal",r:"Internet",c:"Setup",u:"The Signal weak, but we still build."},
-  {s:"The Workshop",r:"IDE",c:"Setup",u:"Open the Workshop and start cooking."},
-  {s:"The Bag",r:"Revenue",c:"Money",u:"Secure the Bag."},
-  {s:"The Rent",r:"Subscription",c:"Money",u:"Charge Rent every month."},
-  {s:"The Storefront",r:"Website",c:"Money",u:"Your Storefront open 24/7."},
-  {s:"The Flip",r:"Resell / license",c:"Money",u:"Flip the template to local businesses."},
-  {s:"The Hustle",r:"Side project",c:"Money",u:"Your Hustle can be legal and remote."},
-  {s:"The Level Up",r:"Challenges",c:"Money",u:"Complete the challenge and Level Up."},
-];
-
-const CATS = [
-  {e:"📣",n:"The Bulletin",r:"Announcements"},
-  {e:"👋",n:"The Roll Call",r:"Introductions"},
-  {e:"❓",n:"The Help Desk",r:"Q&A / Support"},
-  {e:"🧱",n:"The Showcase",r:"Show and Tell"},
-  {e:"💡",n:"The Blueprint Board",r:"Ideas / Proposals"},
-  {e:"🎮",n:"The Game Lab",r:"Game Dev / Mods"},
-  {e:"🎤",n:"The Studio",r:"Audio / Media FX"},
-  {e:"🏈",n:"The Stats Room",r:"Sports Analytics"},
-  {e:"🌍",n:"The Diaspora",r:"Culture / Country"},
-  {e:"💰",n:"The Hustle Index",r:"Commissions"},
-  {e:"🛠️",n:"The Setup Shop",r:"FED-OS / EasyTether"},
-  {e:"🏆",n:"The Level Up",r:"Challenges / Badges"},
-  {e:"📚",n:"The Cookbook",r:"Guides / Tutorials"},
-  {e:"🗣️",n:"The Corner",r:"Off-Topic"},
-  {e:"🚨",n:"The Front Office",r:"Mod Feedback"},
-];
-
-/* ====== MARQUEE ====== */
+/* ticker */
 (() => {
-  const track = document.getElementById('mq');
-  const items = T.slice(0, 24).map(t =>
-    `<span class="mq-item">${t.s} <em>${t.r}</em></span>`
-  ).join('');
-  // duplicate for seamless loop
-  track.innerHTML = items + items;
+  const tk = document.getElementById('tk');
+  const items = [
+    "HIP HOP NEWS & DRAMA",
+    "NO JUMPER CHAOS",
+    "PODCAST BEEF",
+    "STREET POLITICS",
+    "INDUSTRY EXPOSÉS",
+    "LIVE STREAMS & REACTIONS",
+    "COMPTON · SOUTH CENTRAL · WEST COAST",
+    "THE MESSY SHOW",
+    "#DEMONTIMEEXOTICS"
+  ];
+  const html = items.map(i => `<span>${i}</span>`).join('');
+  tk.innerHTML = html + html;
 })();
 
-/* ====== FEATURED CARDS ====== */
+/* stat counters */
 (() => {
-  const g = document.getElementById('featured');
-  // pick 9 diverse terms
-  const picks = [T[0], T[5], T[15], T[21], T[28], T[32], T[35], T[40], T[44]];
-  g.innerHTML = picks.map(t => `
-    <div class="big-card reveal">
-      <span class="bc-tag">${t.c}</span>
-      <div class="bc-slang">${t.s}</div>
-      <div class="bc-real">(${t.r})</div>
-      <div class="bc-use">"${t.u}"</div>
-    </div>
-  `).join('');
-})();
+  const els = document.querySelectorAll('.stat .num[data-count]');
+  const fmt = n => n.toLocaleString('en-US');
+  const anim = (el, target, suffix = '') => {
+    let start = null, dur = 1600;
+    const step = ts => {
+      if(!start) start = ts;
+      const p = Math.min((ts - start) / dur, 1);
+      const eased = 1 - Math.pow(1 - p, 3);
+      const val = Math.floor(eased * target);
+      if(target >= 10000) el.textContent = (val / 1000).toFixed(1) + suffix;
+      else el.textContent = fmt(val);
+      if(p < 1) requestAnimationFrame(step);
+      else {
+        if(target >= 10000) el.textContent = (target / 1000).toFixed(1) + suffix;
+        else el.textContent = fmt(target);
+      }
+    };
+    requestAnimationFrame(step);
+  };
 
-/* ====== CATEGORIES ====== */
-(() => {
-  const g = document.getElementById('cats');
-  g.innerHTML = CATS.map(c => `
-    <div class="cat reveal">
-      <span class="c-emoji">${c.e}</span>
-      <div class="c-name">${c.n}</div>
-      <div class="c-real">${c.r}</div>
-    </div>
-  `).join('');
-})();
-
-/* ====== TRANSLATOR ====== */
-(() => {
-  const inp = document.getElementById('tinput');
-  const out = document.getElementById('result');
-  const randBtn = document.getElementById('randBtn');
-  const modeBtns = document.querySelectorAll('.mode-btn[data-mode]');
-  let mode = 'auto';
-
-  modeBtns.forEach(b => b.addEventListener('click', () => {
-    mode = b.dataset.mode;
-    modeBtns.forEach(x => x.classList.toggle('active', x === b));
-    run();
-  }));
-
-  randBtn.addEventListener('click', () => {
-    const t = T[Math.floor(Math.random() * T.length)];
-    inp.value = t.s;
-    run();
-    inp.focus();
-  });
-
-  inp.addEventListener('input', run);
-
-  function run(){
-    const q = inp.value.trim().toLowerCase();
-    if(!q){
-      out.innerHTML = `<div class="res-hint">Start typing to translate →</div>`;
-      return;
-    }
-
-    const hits = T.filter(t => {
-      const sl = t.s.toLowerCase();
-      const rl = t.r.toLowerCase();
-      if(mode === 'slang') return sl.includes(q);
-      if(mode === 'real') return rl.includes(q);
-      return sl.includes(q) || rl.includes(q);
+  const io = new IntersectionObserver((entries) => {
+    entries.forEach(en => {
+      if(en.isIntersecting){
+        const el = en.target;
+        const count = parseInt(el.dataset.count, 10);
+        const suffix = el.dataset.suffix || '';
+        anim(el, count, suffix);
+        io.unobserve(el);
+      }
     });
+  }, { threshold: 0.5 });
 
-    if(!hits.length){
-      out.innerHTML = `<div class="res-hint">No match. Try 'plug', 'stash', 'playbook', or hit 🎲</div>`;
-      return;
-    }
-
-    // pick primary — exact match first, else first hit
-    const exact = hits.find(t =>
-      t.s.toLowerCase() === q || t.r.toLowerCase() === q
-    );
-    const main = exact || hits[0];
-
-    // decide direction
-    const inpLooksReal = main.r.toLowerCase().includes(q) && !main.s.toLowerCase().includes(q);
-    const fromLabel = inpLooksReal ? main.r : main.s;
-    const toLabel   = inpLooksReal ? main.s : main.r;
-
-    let html = `
-      <div class="res-card">
-        <span class="res-sl">${fromLabel}</span>
-        <span class="res-ar">→</span>
-        <span class="res-rl">${toLabel}</span>
-      </div>
-      <div class="res-use">"${main.u}"</div>
-    `;
-
-    // show other matches as chips
-    const others = hits.filter(t => t !== main).slice(0, 6);
-    if(others.length){
-      html += `<div class="res-multi">` + others.map(t =>
-        `<button class="res-chip" data-v="${t.s}">${t.s} · ${t.r}</button>`
-      ).join('') + `</div>`;
-    }
-
-    out.innerHTML = html;
-
-    // chip clicks
-    out.querySelectorAll('.res-chip').forEach(ch => {
-      ch.addEventListener('click', () => {
-        inp.value = ch.dataset.v;
-        run();
-      });
-    });
-  }
+  els.forEach(el => io.observe(el));
 })();
 
-/* ====== SCROLL REVEAL ====== */
+/* scroll reveal */
 (() => {
   const els = document.querySelectorAll('.reveal');
   if(!('IntersectionObserver' in window)){
@@ -640,9 +620,10 @@ const CATS = [
         io.unobserve(en.target);
       }
     });
-  }, { threshold: 0.12, rootMargin: '0px 0px -60px 0px' });
+  }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
+
   els.forEach((e, i) => {
-    e.style.transitionDelay = Math.min(i * 40, 240) + 'ms';
+    e.style.transitionDelay = Math.min(i * 30, 240) + 'ms';
     io.observe(e);
   });
 })();
