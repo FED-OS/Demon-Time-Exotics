@@ -1,0 +1,47 @@
+# 🎭 Demon Time Exotics — Global Styles
+
+Shared root stylesheet for the DTE brand. The landing site has its own
+comprehensive stylesheet at `apps/landing/src/styles/styles.css`; this file
+exists as a fallback/common baseline for any static page served from the repo
+root (e.g. wiki exports or docs previews).
+
+## Brand tokens
+
+:root {
+  --dte-black: #050505;
+  --dte-dark: #0d0d0d;
+  --dte-charcoal: #141414;
+  --dte-fire: #ff5e1a;
+  --dte-inferno: #ff2e00;
+  --dte-purple: #8b2fd6;
+  --dte-gold: #f5a623;
+  --dte-smoke: #9a9a9a;
+  --dte-text: #f2f2f2;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  background: var(--dte-black);
+  color: var(--dte-text);
+  font-family: "Segoe UI", system-ui, -apple-system, sans-serif;
+  line-height: 1.6;
+}
+
+a {
+  color: var(--dte-fire);
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+}

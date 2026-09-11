@@ -1,0 +1,50 @@
+{
+  "name": "demon-time-exotics",
+  "version": "1.0.0",
+  "private": true,
+  "description": "DEMON TIME EXOTICS — THE MESSY SHOW 💪🏾😈🔥 Official monorepo: GitHub Pages landing site, Tauri desktop app, Electron desktop app, Expo mobile app and shared packages.",
+  "license": "SEE LICENSE IN LICENSE",
+  "homepage": "https://dtemoney448.github.io",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/DTEMONEY448/demon-time-exotics.git"
+  },
+  "bugs": {
+    "url": "https://github.com/DTEMONEY448/demon-time-exotics/issues"
+  },
+  "author": {
+    "name": "Demon Time Exotics",
+    "email": "Bigmoney@demontimeexotics.com",
+    "url": "https://www.youtube.com/@DTEMONEY448"
+  },
+  "engines": {
+    "node": ">=20.0.0",
+    "pnpm": ">=9.0.0"
+  },
+  "type": "module",
+  "packageManager": "pnpm@9.12.0",
+  "scripts": {
+    "dev": "turbo run dev --parallel",
+    "dev:landing": "pnpm --filter @dte/landing dev",
+    "dev:tauri": "pnpm --filter @dte/tauri tauri dev",
+    "dev:electron": "pnpm --filter @dte/electron dev",
+    "dev:mobile": "pnpm --filter @dte/mobile start",
+    "build": "turbo run build",
+    "build:landing": "pnpm --filter @dte/landing build",
+    "build:tauri": "pnpm --filter @dte/tauri tauri build",
+    "build:electron": "pnpm --filter @dte/electron build",
+    "build:mobile": "pnpm --filter @dte/mobile export",
+    "lint": "turbo run lint",
+    "typecheck": "turbo run typecheck",
+    "test": "turbo run test",
+    "clean": "turbo run clean && node tooling/scripts/clean.js",
+    "format": "prettier --write \"**/*.{ts,tsx,js,jsx,css,md,json}\"",
+    "release": "node tooling/scripts/release.js"
+  },
+  "devDependencies": {
+    "@dte/config-eslint": "workspace:*",
+    "@dte/config-typescript": "workspace:*",
+    "prettier": "^3.3.3",
+    "turbo": "^2.3.3"
+  }
+}
