@@ -1,0 +1,64 @@
+# Dependencies
+node_modules/
+.pnpm-store/
+
+# Build outputs
+dist/
+build/
+out/
+.output/
+.next/
+.turbo/
+*.tsbuildinfo
+
+# Expo / React Native
+.expo/
+*.orig.*
+*.jks
+*.p8
+*.p12
+*.key
+*.mobileprovision
+ios/Pods/
+ios/*.xcodeproj/xcuserdata/
+android/.gradle/
+android/app/build/
+android/build/
+
+# Tauri / Rust
+src-tauri/target/
+src-tauri/gen/
+
+# Electron
+release/
+*.exe
+*.dmg
+*.AppImage
+*.deb
+*.snap
+*.msi
+*.blockmap
+
+# Env
+.env
+.env.*
+!.env.example
+
+# Logs / caches
+*.log
+npm-debug.log*
+pnpm-debug.log*
+coverage/
+.cache/
+.DS_Store
+Thumbs.db
+
+# Editors
+.vscode/*
+!.vscode/extensions.json
+.idea/
+*.swp
+
+# Misc
+generated_images/
+workspace-notes.md
