@@ -1,0 +1,23 @@
+blank_issues_enabled: false
+contact_links:
+  - name: 💬 GitHub Discussions
+    url: https://github.com/DTEMONEY448/demon-time-exotics/discussions
+    about: Questions, ideas, and community talk — the fastest place to get a response
+  - name: 🎬 YouTube — @DTEMONEY448
+    url: https://www.youtube.com/@DTEMONEY448
+    about: The Messy Show itself — subscribe & turn on ALL alerts 🔔 (content feedback belongs in YouTube comments, not here)
+  - name: 📸 Instagram — @dtemoney448
+    url: https://instagram.com/dtemoney448
+    about: Official Instagram — behind the scenes and daily content
+  - name: 🎮 Twitch — dtemoney448
+    url: https://twitch.tv/dtemoney448
+    about: Live streams — daily reactions, exposés, and community debates
+  - name: 👕 Merch — shopdemontimeexotics.com
+    url: https://shopdemontimeexotics.com
+    about: Official DTE gear — rep the movement
+  - name: 🔒 Security
+    url: https://github.com/DTEMONEY448/demon-time-exotics/blob/main/SECURITY.md
+    about: Found a security issue? Read this — do NOT open a public issue
+  - name: ✉️ Business inquiries
+    url: mailto:Bigmoney@demontimeexotics.com
+    about: Collabs, sponsorship, interviews — business only
