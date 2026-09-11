@@ -1,0 +1,52 @@
+{
+  "expo": {
+    "name": "Demon Time Exotics",
+    "slug": "demon-time-exotics",
+    "version": "1.0.0",
+    "orientation": "portrait",
+    "icon": "./src/assets/logo.png",
+    "scheme": "demontimeexotics",
+    "userInterfaceStyle": "dark",
+    "backgroundColor": "#050505",
+    "splash": {
+      "image": "./src/assets/logo.png",
+      "resizeMode": "contain",
+      "backgroundColor": "#050505"
+    },
+    "ios": {
+      "bundleId": "com.demontimeexotics.mobile",
+      "supportsTablet": false,
+      "infoPlist": {
+        "LSApplicationCategoryType": "public.app-category.entertainment"
+      }
+    },
+    "android": {
+      "package": "com.demontimeexotics.mobile",
+      "adaptiveIcon": {
+        "foregroundImage": "./src/assets/logo.png",
+        "backgroundColor": "#050505"
+      },
+      "edgeToEdgeEnabled": true
+    },
+    "web": {
+      "bundler": "metro",
+      "output": "static",
+      "favicon": "./src/assets/logo.png"
+    },
+    "plugins": ["expo-router"],
+    "experiments": {
+      "typedRoutes": true
+    },
+    "extra": {
+      "router": {
+        "origin": false
+      },
+      "eas": {
+        "projectId": "00000000-0000-0000-0000-000000000000"
+      }
+    },
+    "updates": {
+      "fallbackToCacheTimeout": 0
+    }
+  }
+}

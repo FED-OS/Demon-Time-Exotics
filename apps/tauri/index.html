@@ -1,0 +1,54 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- CSP is enforced by Tauri at the webview level (see tauri.conf.json) -->
+    <title>DEMON TIME EXOTICS — THE MESSY SHOW</title>
+    <meta name="description" content="Desktop home of Demon Time Exotics — hip hop news, podcast beef and urban entertainment. No scripts. No filters." />
+    <link rel="icon" type="image/png" href="icons/logo-64.png" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@400;600;800&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="src/styles/styles.css" />
+  <script src="https://sites.super.myninja.ai/_assets/ninja-daytona-script.js"></script>
+</head>
+  <body>
+    <div id="app">
+      <header class="topbar">
+        <span class="brand">😈 DEMON TIME EXOTICS</span>
+        <span class="brand-sub">THE MESSY SHOW</span>
+      </header>
+
+      <main>
+        <section class="hero">
+          <h1 class="title">DEMON TIME <span class="fire">EXOTICS</span></h1>
+          <p class="tagline">
+            The rawest, most unfiltered voice in Hip Hop News, Podcast Beef and
+            Urban Entertainment — now on your desktop.
+          </p>
+          <div class="stats" id="stats">
+            <div class="stat"><strong data-count="21200">0</strong><span>Subscribers</span></div>
+            <div class="stat"><strong data-count="406">0</strong><span>Videos</span></div>
+            <div class="stat"><strong data-count="3025509">0</strong><span>Total Views</span></div>
+          </div>
+        </section>
+
+        <section class="panel" id="platforms">
+          <h2 class="section-title">TAP IN</h2>
+          <div class="grid" id="hub"></div>
+        </section>
+      </main>
+
+      <footer class="statusbar">
+        <span id="rust-status">Booting core…</span>
+        <span class="dim">v1.0.0 · Tauri 2 · Rust 🦀</span>
+      </footer>
+    </div>
+
+    <script src="src/main.ts" type="module"></script>
+  </body>
+</html>

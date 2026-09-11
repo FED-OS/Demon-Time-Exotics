@@ -1,0 +1,52 @@
+appId: "com.demontimeexotics.desktop"
+productName: "Demon Time Exotics"
+copyright: "© 2025 Demon Time Exotics"
+directories:
+  output: release
+  buildResources: resources
+files:
+  - dist/**/*
+  - resources/icon.png
+  - package.json
+asar: true
+compression: maximum
+electronLanguages:
+  - en-US
+
+# ---------- macOS ----------
+mac:
+  category: public.app-category.entertainment
+  target:
+    - dmg
+    - zip
+  icon: resources/icon.png
+  darkModeSupport: true
+
+# ---------- Windows ----------
+win:
+  target:
+    - nsis
+    - portable
+  icon: resources/icon.png
+artifactName: "DemonTimeExotics-Setup-${version}.${ext}"
+
+nsis:
+  oneClick: false
+  perMachine: false
+  allowToChangeInstallationDirectory: true
+  createDesktopShortcut: always
+  shortcutName: "Demon Time Exotics"
+
+# ---------- Linux ----------
+linux:
+  target:
+    - AppImage
+    - deb
+  icon: resources/icon.png
+  category: AudioVideo
+  maintainer: "Demon Time Exotics <Bigmoney@demontimeexotics.com>"
+
+publish:
+  provider: github
+  owner: DTEMONEY448
+  repo: demon-time-exotics

@@ -1,0 +1,35 @@
+{
+  "name": "@dte/tauri",
+  "version": "1.0.0",
+  "private": true,
+  "description": "DEMON TIME EXOTICS — THE MESSY SHOW desktop app built with Tauri 2 (Rust core, web frontend).",
+  "type": "module",
+  "license": "SEE LICENSE IN LICENSE",
+  "scripts": {
+    "dev": "vite",
+    "build": "tsc --noEmit && vite build",
+    "build:fast": "vite build",
+    "preview": "vite preview",
+    "tauri": "tauri",
+    "tauri:dev": "tauri dev",
+    "tauri:build": "tauri build",
+    "typecheck": "tsc --noEmit",
+    "lint": "eslint src --ext .ts,.tsx",
+    "clean": "rm -rf dist src-tauri/target .turbo"
+  },
+  "dependencies": {
+    "@dte/core": "workspace:*",
+    "@dte/shared": "workspace:*",
+    "@dte/ui": "workspace:*",
+    "@tauri-apps/api": "^2.1.1",
+    "@tauri-apps/plugin-opener": "^2.0.0",
+    "@tauri-apps/plugin-shell": "^2.0.0"
+  },
+  "devDependencies": {
+    "@dte/config-typescript": "workspace:*",
+    "@dte/config-vite": "workspace:*",
+    "@tauri-apps/cli": "^2.1.0",
+    "typescript": "^5.6.3",
+    "vite": "^5.4.11"
+  }
+}

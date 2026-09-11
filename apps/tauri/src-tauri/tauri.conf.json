@@ -1,0 +1,64 @@
+{
+  "$schema": "https://schema.tauri.app/config/2",
+  "productName": "Demon Time Exotics",
+  "version": "1.0.0",
+  "identifier": "com.demontimeexotics.desktop",
+  "build": {
+    "beforeDevCommand": "pnpm dev",
+    "devUrl": "http://localhost:1420",
+    "beforeBuildCommand": "pnpm build:fast",
+    "frontendDist": "../dist"
+  },
+  "app": {
+    "windows": [
+      {
+        "title": "DEMON TIME EXOTICS — THE MESSY SHOW",
+        "width": 1100,
+        "height": 720,
+        "minWidth": 420,
+        "minHeight": 540,
+        "resizable": true,
+        "fullscreen": false,
+        "decorations": true,
+        "transparent": false,
+        "center": true
+      }
+    ],
+    "security": {
+      "csp": "default-src 'self'; img-src 'self' asset: http://asset.localhost data:; style-src 'self' 'unsafe-inline'; font-src 'self' data: https://fonts.googleapis.com https://fonts.gstatic.com; script-src 'self'; connect-src 'self' https://api.github.com; ipc: http://ipc.localhost"
+    }
+  },
+  "bundle": {
+    "active": true,
+    "targets": "all",
+    "icon": [
+      "icons/icon.png"
+    ],
+    "category": "Entertainment",
+    "shortDescription": "THE MESSY SHOW on your desktop",
+    "longDescription": "Demon Time Exotics desktop home — hip hop news, podcast beef and urban entertainment, raw and unfiltered.",
+    "copyright": "© 2025 Demon Time Exotics",
+    "publisher": "Demon Time Exotics",
+    "resources": [],
+    "externalBin": [],
+    "windows": {
+      "webviewInstallMode": {
+        "type": "embedInstaller"
+      },
+      "wix": {
+        "language": "en-US"
+      }
+    },
+    "macOS": {
+      "minimumSystemVersion": "10.15",
+      "dmg": {
+        "appCategoryName": "public.app-category.entertainment"
+      }
+    },
+    "linux": {
+      "deb": {
+        "depends": []
+      }
+    }
+  }
+}

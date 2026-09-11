@@ -1,0 +1,21 @@
+{
+  "extends": "../../tsconfig.base.json",
+  "compilerOptions": {
+    "target": "ES2022",
+    "lib": ["ES2022"],
+    "module": "ESNext",
+    "moduleResolution": "bundler",
+    "jsx": "react-jsx",
+    "noEmit": true,
+    "allowImportingTsExtensions": true,
+    "types": ["react-native"],
+    "paths": {
+      "@dte/ui": ["../../packages/ui/src/index.ts"],
+      "@dte/core": ["../../packages/core/src/index.ts"],
+      "@dte/shared": ["../../packages/shared/src/index.ts"],
+      "@dte/assets/*": ["../../packages/assets/*"]
+    }
+  },
+  "include": ["app", "src", "expo-env.d.ts"],
+  "exclude": ["node_modules", "dist", ".expo", "android", "ios"]
+}

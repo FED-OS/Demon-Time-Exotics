@@ -1,0 +1,20 @@
+{
+  "extends": "../../tsconfig.base.json",
+  "compilerOptions": {
+    "target": "ES2022",
+    "lib": ["ES2022", "DOM", "DOM.Iterable"],
+    "module": "ESNext",
+    "moduleResolution": "bundler",
+    "jsx": "preserve",
+    "noEmit": true,
+    "types": ["vite/client"],
+    "paths": {
+      "@dte/ui": ["../../packages/ui/src/index.ts"],
+      "@dte/core": ["../../packages/core/src/index.ts"],
+      "@dte/shared": ["../../packages/shared/src/index.ts"],
+      "@dte/assets/*": ["../../packages/assets/*"]
+    }
+  },
+  "include": ["src", "vite.config.ts"],
+  "exclude": ["node_modules", "dist"]
+}

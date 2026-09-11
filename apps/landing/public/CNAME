@@ -1,0 +1,6 @@
+# Optional custom domain for the GitHub Pages site.
+# Uncomment and set your domain, then add a DNS CNAME record pointing at
+# <user>.github.io. GitHub Pages serves the repo at
+# https://dtemoney448.github.io/demon-time-exotics/ by default.
+#
+# demon-time-exotics.com
