@@ -1,0 +1,651 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="theme-color" content="#050506">
+<title>FED-EDU // Speak The Language</title>
+<style>
+:root{
+  --bg:#050506;
+  --ink:#f4f4f7;
+  --dim:#6e6e7a;
+  --green:#00ff88;
+  --gold:#ffd54a;
+  --pink:#ff2e88;
+  --line:#1a1a22;
+  --mono:ui-monospace,'SF Mono',Menlo,Consolas,monospace;
+  --sans:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,Arial,sans-serif;
+}
+*{margin:0;padding:0;box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+html{scroll-behavior:smooth}
+body{
+  background:var(--bg);color:var(--ink);font-family:var(--sans);
+  overflow-x:hidden;line-height:1.5;
+  -webkit-font-smoothing:antialiased;
+}
+::selection{background:var(--green);color:#000}
+::-webkit-scrollbar{width:8px}
+::-webkit-scrollbar-track{background:#0a0a0e}
+::-webkit-scrollbar-thumb{background:#25252f;border-radius:4px}
+::-webkit-scrollbar-thumb:hover{background:var(--green)}
+
+/* grain overlay */
+body::after{
+  content:'';position:fixed;inset:0;pointer-events:none;z-index:9999;opacity:.035;
+  background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+}
+
+/* ============ NAV ============ */
+nav{
+  position:fixed;top:0;left:0;right:0;z-index:100;
+  display:flex;align-items:center;justify-content:space-between;
+  padding:18px 24px;
+  mix-blend-mode:difference;
+}
+.logo{
+  font-family:var(--mono);font-weight:800;font-size:1rem;
+  letter-spacing:-.5px;color:#fff;
+}
+.logo b{color:var(--green)}
+.nav-r{display:flex;gap:24px;font-family:var(--mono);font-size:.78rem;letter-spacing:.5px}
+.nav-r a{color:#fff;text-decoration:none;opacity:.7;transition:.2s}
+.nav-r a:hover{opacity:1}
+@media(max-width:600px){.nav-r{display:none}}
+
+/* ============ HERO ============ */
+.hero{
+  min-height:100svh;
+  display:flex;flex-direction:column;justify-content:center;
+  padding:120px 24px 40px;
+  position:relative;
+  overflow:hidden;
+}
+.hero::before{
+  content:'';position:absolute;inset:0;z-index:-1;
+  background:
+    radial-gradient(circle at 20% 30%,rgba(0,255,136,.12),transparent 45%),
+    radial-gradient(circle at 80% 70%,rgba(255,46,136,.08),transparent 45%),
+    radial-gradient(circle at 50% 100%,rgba(255,213,74,.06),transparent 50%);
+  filter:blur(40px);
+}
+.eyebrow{
+  font-family:var(--mono);font-size:.72rem;letter-spacing:3px;
+  text-transform:uppercase;color:var(--green);
+  margin-bottom:28px;display:flex;align-items:center;gap:12px;
+}
+.eyebrow::before{
+  content:'';width:32px;height:1px;background:var(--green);
+}
+h1{
+  font-size:clamp(3rem,12vw,9rem);
+  font-weight:900;letter-spacing:-.05em;line-height:.88;
+  margin-bottom:32px;
+}
+h1 .row{display:block;overflow:hidden}
+h1 .row span{display:inline-block;animation:rise .9s cubic-bezier(.2,.7,.2,1) both}
+h1 .row:nth-child(2) span{animation-delay:.1s}
+h1 .row:nth-child(3) span{animation-delay:.2s}
+@keyframes rise{from{transform:translateY(110%)}to{transform:translateY(0)}}
+.grad{
+  background:linear-gradient(90deg,var(--green),var(--gold) 50%,var(--pink));
+  background-size:200% 100%;
+  -webkit-background-clip:text;background-clip:text;
+  -webkit-text-fill-color:transparent;
+  animation:shift 6s ease-in-out infinite;
+}
+@keyframes shift{0%,100%{background-position:0% 50%}50%{background-position:100% 50%}}
+.outline{
+  -webkit-text-stroke:2px var(--ink);
+  color:transparent;
+}
+.hero-sub{
+  max-width:560px;font-size:clamp(1rem,2vw,1.2rem);
+  color:#a8a8b4;line-height:1.6;margin-bottom:40px;
+  animation:rise 1s .4s cubic-bezier(.2,.7,.2,1) both;
+}
+.hero-sub b{color:var(--ink);font-weight:600}
+.hero-sub i{color:var(--green);font-style:normal}
+.scroll-hint{
+  font-family:var(--mono);font-size:.7rem;color:var(--dim);
+  letter-spacing:2px;text-transform:uppercase;
+  display:flex;align-items:center;gap:10px;
+  animation:fade 1.2s .8s both;
+}
+@keyframes fade{from{opacity:0}to{opacity:1}}
+.scroll-hint::after{
+  content:'';width:40px;height:1px;background:var(--dim);
+  animation:stretch 2s ease-in-out infinite;
+}
+@keyframes stretch{0%,100%{width:40px}50%{width:70px}}
+
+/* ============ MARQUEE ============ */
+.marquee{
+  border-top:1px solid var(--line);border-bottom:1px solid var(--line);
+  padding:20px 0;overflow:hidden;
+  background:#08080c;
+  white-space:nowrap;
+}
+.marquee-track{
+  display:inline-flex;gap:48px;padding-right:48px;
+  animation:scroll 60s linear infinite;
+  will-change:transform;
+}
+.marquee-track:hover{animation-play-state:paused}
+@keyframes scroll{to{transform:translateX(-50%)}}
+.mq-item{
+  font-family:var(--mono);font-size:.95rem;font-weight:600;
+  display:inline-flex;align-items:center;gap:10px;
+}
+.mq-item::before{content:'◆';color:var(--green);font-size:.6rem}
+.mq-item em{color:var(--dim);font-style:normal;font-weight:400;font-size:.82rem}
+
+/* ============ TRANSLATOR ============ */
+.translator{
+  padding:100px 24px;max-width:1000px;margin:0 auto;
+}
+.sec-label{
+  font-family:var(--mono);font-size:.7rem;letter-spacing:3px;
+  text-transform:uppercase;color:var(--green);margin-bottom:16px;
+  display:flex;align-items:center;gap:12px;
+}
+.sec-label::before{content:'//';opacity:.5}
+h2{
+  font-size:clamp(2rem,6vw,4rem);font-weight:900;
+  letter-spacing:-.04em;line-height:.95;margin-bottom:20px;
+}
+h2 .g{color:var(--green)}
+h2 .y{color:var(--gold)}
+.sec-desc{color:#8a8a96;max-width:520px;font-size:1rem;margin-bottom:48px}
+
+.translate-box{
+  background:#0a0a0e;border:1px solid var(--line);
+  border-radius:20px;padding:8px;
+  position:relative;overflow:hidden;
+}
+.translate-box::before{
+  content:'';position:absolute;inset:-2px;z-index:0;border-radius:22px;
+  background:linear-gradient(135deg,var(--green),var(--gold),var(--pink),var(--green));
+  background-size:400% 400%;
+  animation:shift2 8s linear infinite;
+  opacity:.6;filter:blur(8px);
+}
+@keyframes shift2{0%{background-position:0% 50%}100%{background-position:400% 50%}}
+.translate-inner{
+  position:relative;z-index:1;
+  background:#0a0a0e;border-radius:14px;
+  padding:28px;
+}
+.translate-row{
+  display:flex;align-items:center;gap:14px;flex-wrap:wrap;
+  font-family:var(--mono);font-size:.75rem;color:var(--dim);
+  margin-bottom:16px;
+}
+.mode-btn{
+  font-family:var(--mono);font-size:.72rem;font-weight:700;
+  padding:6px 14px;border-radius:100px;
+  background:transparent;border:1px solid var(--line);
+  color:var(--dim);cursor:pointer;transition:.2s;
+}
+.mode-btn.active{background:var(--green);color:#001a0d;border-color:var(--green)}
+#tinput{
+  width:100%;background:transparent;border:none;outline:none;
+  font-size:clamp(1.4rem,4vw,2rem);font-weight:800;
+  color:var(--ink);font-family:var(--sans);letter-spacing:-.02em;
+  padding:8px 0;
+}
+#tinput::placeholder{color:#2a2a35}
+.result{
+  margin-top:24px;padding-top:24px;border-top:1px dashed var(--line);
+  min-height:120px;
+}
+.res-card{
+  display:flex;align-items:baseline;gap:16px;flex-wrap:wrap;
+  animation:pop .3s ease both;
+}
+@keyframes pop{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
+.res-sl{
+  font-size:clamp(1.6rem,5vw,2.6rem);font-weight:900;
+  letter-spacing:-.03em;color:var(--green);line-height:1;
+}
+.res-ar{font-size:1.6rem;color:var(--dim)}
+.res-rl{
+  font-family:var(--mono);font-size:clamp(1rem,2.5vw,1.3rem);
+  color:var(--gold);font-weight:600;
+}
+.res-use{
+  margin-top:16px;font-style:italic;color:#9a9aa6;
+  font-size:.95rem;line-height:1.6;
+  border-left:2px solid var(--green);padding-left:16px;
+}
+.res-hint{color:var(--dim);font-family:var(--mono);font-size:.85rem}
+.res-multi{
+  display:flex;flex-wrap:wrap;gap:8px;margin-top:12px;
+}
+.res-chip{
+  font-family:var(--mono);font-size:.75rem;
+  padding:6px 12px;border-radius:100px;
+  background:#12121a;border:1px solid var(--line);
+  color:#b8b8c4;cursor:pointer;transition:.15s;
+}
+.res-chip:hover{border-color:var(--green);color:var(--green)}
+
+/* ============ FEATURED CARDS ============ */
+.featured{padding:80px 24px;max-width:1200px;margin:0 auto}
+.reveal{opacity:0;transform:translateY(40px);transition:opacity .7s cubic-bezier(.2,.7,.2,1),transform .7s cubic-bezier(.2,.7,.2,1)}
+.reveal.on{opacity:1;transform:none}
+
+.card-grid{
+  display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));
+  gap:16px;
+}
+.big-card{
+  background:#0a0a0e;border:1px solid var(--line);
+  border-radius:16px;padding:26px 22px;
+  position:relative;overflow:hidden;
+  transition:transform .3s cubic-bezier(.2,.7,.2,1),border-color .3s;
+  cursor:default;
+}
+.big-card:hover{transform:translateY(-4px) scale(1.01);border-color:#33333f}
+.big-card::before{
+  content:'';position:absolute;top:0;left:0;right:0;height:3px;
+  background:linear-gradient(90deg,var(--green),var(--gold));
+  transform:scaleX(0);transform-origin:left;transition:transform .4s;
+}
+.big-card:hover::before{transform:scaleX(1)}
+.bc-tag{
+  font-family:var(--mono);font-size:.62rem;letter-spacing:2px;
+  text-transform:uppercase;color:var(--green);opacity:.8;
+  margin-bottom:14px;display:block;
+}
+.bc-slang{
+  font-size:1.5rem;font-weight:900;letter-spacing:-.02em;
+  margin-bottom:6px;line-height:1.1;
+}
+.bc-real{
+  font-family:var(--mono);font-size:.8rem;color:var(--gold);
+  margin-bottom:16px;
+}
+.bc-use{
+  font-size:.86rem;color:#8a8a96;line-height:1.55;
+  font-style:italic;
+}
+
+/* ============ CATEGORIES ============ */
+.cats-sec{padding:80px 24px;max-width:1200px;margin:0 auto}
+.cat-grid{
+  display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));
+  gap:12px;
+}
+.cat{
+  background:#0a0a0e;border:1px solid var(--line);
+  border-radius:14px;padding:22px 18px;
+  transition:.25s;position:relative;overflow:hidden;
+}
+.cat:hover{border-color:var(--green);transform:translateY(-3px)}
+.cat:hover .c-emoji{transform:scale(1.2) rotate(-8deg)}
+.c-emoji{
+  font-size:1.8rem;display:block;margin-bottom:12px;
+  transition:transform .3s cubic-bezier(.2,.7,.2,1);
+  transform-origin:left center;
+}
+.c-name{font-weight:800;font-size:1rem;letter-spacing:-.01em;margin-bottom:4px}
+.c-real{font-family:var(--mono);font-size:.72rem;color:var(--dim)}
+
+/* ============ RULE ============ */
+.rule-sec{
+  padding:120px 24px;text-align:center;
+  position:relative;overflow:hidden;
+  border-top:1px solid var(--line);border-bottom:1px solid var(--line);
+  background:
+    radial-gradient(circle at 50% 50%,rgba(0,255,136,.06),transparent 60%);
+}
+.rule-big{
+  font-size:clamp(1.8rem,6vw,4rem);font-weight:900;
+  letter-spacing:-.04em;line-height:1.05;
+  max-width:900px;margin:0 auto 24px;
+}
+.rule-big .g{color:var(--green)}
+.rule-big .y{color:var(--gold)}
+.rule-p{
+  color:#8a8a96;max-width:520px;margin:0 auto;
+  font-size:1rem;line-height:1.6;
+}
+.rule-p b{color:var(--ink)}
+
+/* ============ CTA ============ */
+.cta-sec{padding:100px 24px;text-align:center;max-width:800px;margin:0 auto}
+.cta-btn{
+  display:inline-flex;align-items:center;gap:12px;
+  font-family:var(--mono);font-size:.9rem;font-weight:700;
+  padding:18px 32px;border-radius:100px;
+  background:var(--green);color:#001a0d;
+  text-decoration:none;border:none;cursor:pointer;
+  transition:transform .2s,box-shadow .3s;
+  box-shadow:0 0 40px rgba(0,255,136,.25);
+}
+.cta-btn:hover{transform:translateY(-3px);box-shadow:0 0 60px rgba(0,255,136,.5)}
+.cta-btn::after{content:'→';transition:transform .2s}
+.cta-btn:hover::after{transform:translateX(4px)}
+
+/* ============ FOOTER ============ */
+footer{
+  border-top:1px solid var(--line);
+  padding:40px 24px;text-align:center;
+  font-family:var(--mono);font-size:.75rem;color:var(--dim);
+}
+footer .logo{justify-content:center;margin-bottom:12px;display:block}
+footer a{color:var(--green);text-decoration:none}
+
+@media(max-width:600px){
+  .translate-inner{padding:20px}
+  .hero{padding:100px 20px 30px}
+}
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="logo">FED<b>-EDU</b></div>
+  <div class="nav-r">
+    <a href="#translate">Translate</a>
+    <a href="#terms">Terms</a>
+    <a href="#rooms">Rooms</a>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="eyebrow">FED-OS × fedpromptly</div>
+  <h1>
+    <span class="row"><span>Speak</span></span>
+    <span class="row"><span class="grad">The Language.</span></span>
+    <span class="row"><span class="outline">Own The Code.</span></span>
+  </h1>
+  <p class="hero-sub">
+    AI, coding, and tech explained in <i>the language we actually speak</i>.
+    <b>Slang opens the door. Real terms get you paid.</b>
+    A beginner-first space for all Black men — every flag, every block, every background.
+  </p>
+  <div class="scroll-hint">Scroll to translate</div>
+</section>
+
+<!-- MARQUEE -->
+<div class="marquee" aria-hidden="true">
+  <div class="marquee-track" id="mq"></div>
+</div>
+
+<!-- TRANSLATOR -->
+<section class="translator" id="translate">
+  <div class="sec-label reveal">The Translator</div>
+  <h2 class="reveal">Type a word.<br>Get <span class="g">both languages.</span></h2>
+  <p class="sec-desc reveal">Slang or corporate — we translate both ways. Try "plug", "API", "stash", or hit the button for a random one.</p>
+
+  <div class="translate-box reveal">
+    <div class="translate-inner">
+      <div class="translate-row">
+        <button class="mode-btn active" data-mode="auto">AUTO</button>
+        <button class="mode-btn" data-mode="slang">STREET → REAL</button>
+        <button class="mode-btn" data-mode="real">REAL → STREET</button>
+        <button class="mode-btn" id="randBtn">🎲 RANDOM</button>
+      </div>
+      <input id="tinput" type="text" placeholder="Type 'plug' or 'API'…" autocomplete="off" spellcheck="false">
+      <div class="result" id="result">
+        <div class="res-hint">Start typing to translate →</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FEATURED -->
+<section class="featured" id="terms">
+  <div class="sec-label reveal">The Essentials</div>
+  <h2 class="reveal">Every term.<br><span class="y">Both languages.</span></h2>
+  <p class="sec-desc reveal">The core vocabulary. Learn it, use it, teach it to the next brother.</p>
+  <div class="card-grid" id="featured"></div>
+</section>
+
+<!-- CATEGORIES -->
+<section class="cats-sec" id="rooms">
+  <div class="sec-label reveal">The Corner</div>
+  <h2 class="reveal">The Rooms.</h2>
+  <p class="sec-desc reveal">Every Discussion category has a street name and a real purpose.</p>
+  <div class="cat-grid" id="cats"></div>
+</section>
+
+<!-- RULE -->
+<section class="rule-sec">
+  <div class="rule-big reveal">
+    Slang opens the door.<br>
+    <span class="g">Real terms get you paid.</span>
+  </div>
+  <p class="rule-p reveal">
+    Always pair it. <b>"The Plug (API)"</b> — never just "The Plug" forever.
+    Beginners feel at home, and they still learn the language that gets them hired.
+  </p>
+</section>
+
+<!-- CTA -->
+<section class="cta-sec">
+  <h2 class="reveal">Ready to <span class="g">build?</span></h2>
+  <p class="sec-desc reveal" style="margin:0 auto 32px">Pull up to the Corner. Drop your flag. Find your crew.</p>
+  <a href="#" class="cta-btn reveal">Enter The Block</a>
+</section>
+
+<footer>
+  <span class="logo">FED<b>-EDU</b></span>
+  Real-life Minecraft. Pick up a block. Build something. We all eat.
+</footer>
+
+<script>
+/* ====== DATA ====== */
+const T = [
+  {s:"The Brain",r:"AI model",c:"AI",u:"The Brain gotta eat good data before it can think right."},
+  {s:"Let it cook",r:"Run the model",c:"AI",u:"Drop the prompt and let it cook."},
+  {s:"The Homie",r:"AI agent",c:"AI",u:"Set the Homie to watch sneaker prices all night."},
+  {s:"The Word",r:"Prompt",c:"AI",u:"Give the Brain the right Word and it'll do the job."},
+  {s:"Capping",r:"Hallucination",c:"AI",u:"The Brain might be capping. Double-check the facts."},
+  {s:"The Playbook",r:"Code",c:"Code",u:"Write the Playbook so the machine knows the plays."},
+  {s:"The Blueprint",r:"Repo / template",c:"Code",u:"Fork the Blueprint and make it yours."},
+  {s:"The Bones",r:"HTML",c:"Code",u:"The Bones hold the page together."},
+  {s:"The Fit",r:"CSS",c:"Code",u:"The Fit makes it look clean."},
+  {s:"The Moves",r:"JavaScript",c:"Code",u:"The Moves make the page react when you click."},
+  {s:"The Engine",r:"Backend",c:"Code",u:"The Engine handles the logic and the stash."},
+  {s:"The Face",r:"Frontend",c:"Code",u:"The Face is what the people see."},
+  {s:"The Glitch",r:"Bug",c:"Code",u:"There's a Glitch in the Playbook."},
+  {s:"The Patch",r:"Fix",c:"Code",u:"Push the Patch and the Glitch gone."},
+  {s:"The Block",r:"GitHub org",c:"GitHub",u:"Welcome to the Block."},
+  {s:"The Corner",r:"Discussions",c:"GitHub",u:"Pull up to the Corner and introduce yourself."},
+  {s:"The Showcase",r:"Show and tell",c:"GitHub",u:"Post your build in the Showcase."},
+  {s:"Run it up",r:"Fork",c:"GitHub",u:"Run it up to your own Block."},
+  {s:"Lock it in",r:"Commit",c:"GitHub",u:"Lock it in before you push."},
+  {s:"The Co-sign",r:"Pull request",c:"GitHub",u:"Open a Co-sign so we can check your work."},
+  {s:"The Dap",r:"Star / upvote",c:"GitHub",u:"Give him a Dap for helping."},
+  {s:"The Plug",r:"API",c:"Web",u:"The Plug feed data into your app."},
+  {s:"The Door",r:"Endpoint",c:"Web",u:"Hit the Door and send your request."},
+  {s:"The Passcode",r:"API key",c:"Web",u:"Don't leak your Passcode."},
+  {s:"The ID Check",r:"Authentication",c:"Web",u:"The ID Check keep strangers out."},
+  {s:"The Turf",r:"Domain",c:"Web",u:"That Turf yours. Build on it."},
+  {s:"The Spot",r:"Hosting",c:"Web",u:"GitHub Pages is a free Spot."},
+  {s:"The Live Line",r:"WebSocket",c:"Web",u:"The Live Line keep chat open both ways."},
+  {s:"The Stash House",r:"Database",c:"Data",u:"Store the data in the Stash House."},
+  {s:"The Grid",r:"Table",c:"Data",u:"The Grid hold all the records."},
+  {s:"The Record",r:"Row",c:"Data",u:"Each Record is one player."},
+  {s:"The Link Up",r:"Join",c:"Data",u:"Link the two Grids together."},
+  {s:"The Lock",r:"Encryption",c:"Security",u:"The Lock scramble the message."},
+  {s:"The Keys",r:"Credentials",c:"Security",u:"Guard your Keys."},
+  {s:"The Double Lock",r:"2FA",c:"Security",u:"Turn on the Double Lock."},
+  {s:"The Whip",r:"Computer",c:"Setup",u:"My Whip old but it run."},
+  {s:"The Old Whip",r:"Low-spec PC",c:"Setup",u:"The Old Whip still work with FED-OS."},
+  {s:"The Cord",r:"USB tether",c:"Setup",u:"Plug in the Cord and share the signal."},
+  {s:"The Signal",r:"Internet",c:"Setup",u:"The Signal weak, but we still build."},
+  {s:"The Workshop",r:"IDE",c:"Setup",u:"Open the Workshop and start cooking."},
+  {s:"The Bag",r:"Revenue",c:"Money",u:"Secure the Bag."},
+  {s:"The Rent",r:"Subscription",c:"Money",u:"Charge Rent every month."},
+  {s:"The Storefront",r:"Website",c:"Money",u:"Your Storefront open 24/7."},
+  {s:"The Flip",r:"Resell / license",c:"Money",u:"Flip the template to local businesses."},
+  {s:"The Hustle",r:"Side project",c:"Money",u:"Your Hustle can be legal and remote."},
+  {s:"The Level Up",r:"Challenges",c:"Money",u:"Complete the challenge and Level Up."},
+];
+
+const CATS = [
+  {e:"📣",n:"The Bulletin",r:"Announcements"},
+  {e:"👋",n:"The Roll Call",r:"Introductions"},
+  {e:"❓",n:"The Help Desk",r:"Q&A / Support"},
+  {e:"🧱",n:"The Showcase",r:"Show and Tell"},
+  {e:"💡",n:"The Blueprint Board",r:"Ideas / Proposals"},
+  {e:"🎮",n:"The Game Lab",r:"Game Dev / Mods"},
+  {e:"🎤",n:"The Studio",r:"Audio / Media FX"},
+  {e:"🏈",n:"The Stats Room",r:"Sports Analytics"},
+  {e:"🌍",n:"The Diaspora",r:"Culture / Country"},
+  {e:"💰",n:"The Hustle Index",r:"Commissions"},
+  {e:"🛠️",n:"The Setup Shop",r:"FED-OS / EasyTether"},
+  {e:"🏆",n:"The Level Up",r:"Challenges / Badges"},
+  {e:"📚",n:"The Cookbook",r:"Guides / Tutorials"},
+  {e:"🗣️",n:"The Corner",r:"Off-Topic"},
+  {e:"🚨",n:"The Front Office",r:"Mod Feedback"},
+];
+
+/* ====== MARQUEE ====== */
+(() => {
+  const track = document.getElementById('mq');
+  const items = T.slice(0, 24).map(t =>
+    `<span class="mq-item">${t.s} <em>${t.r}</em></span>`
+  ).join('');
+  // duplicate for seamless loop
+  track.innerHTML = items + items;
+})();
+
+/* ====== FEATURED CARDS ====== */
+(() => {
+  const g = document.getElementById('featured');
+  // pick 9 diverse terms
+  const picks = [T[0], T[5], T[15], T[21], T[28], T[32], T[35], T[40], T[44]];
+  g.innerHTML = picks.map(t => `
+    <div class="big-card reveal">
+      <span class="bc-tag">${t.c}</span>
+      <div class="bc-slang">${t.s}</div>
+      <div class="bc-real">(${t.r})</div>
+      <div class="bc-use">"${t.u}"</div>
+    </div>
+  `).join('');
+})();
+
+/* ====== CATEGORIES ====== */
+(() => {
+  const g = document.getElementById('cats');
+  g.innerHTML = CATS.map(c => `
+    <div class="cat reveal">
+      <span class="c-emoji">${c.e}</span>
+      <div class="c-name">${c.n}</div>
+      <div class="c-real">${c.r}</div>
+    </div>
+  `).join('');
+})();
+
+/* ====== TRANSLATOR ====== */
+(() => {
+  const inp = document.getElementById('tinput');
+  const out = document.getElementById('result');
+  const randBtn = document.getElementById('randBtn');
+  const modeBtns = document.querySelectorAll('.mode-btn[data-mode]');
+  let mode = 'auto';
+
+  modeBtns.forEach(b => b.addEventListener('click', () => {
+    mode = b.dataset.mode;
+    modeBtns.forEach(x => x.classList.toggle('active', x === b));
+    run();
+  }));
+
+  randBtn.addEventListener('click', () => {
+    const t = T[Math.floor(Math.random() * T.length)];
+    inp.value = t.s;
+    run();
+    inp.focus();
+  });
+
+  inp.addEventListener('input', run);
+
+  function run(){
+    const q = inp.value.trim().toLowerCase();
+    if(!q){
+      out.innerHTML = `<div class="res-hint">Start typing to translate →</div>`;
+      return;
+    }
+
+    const hits = T.filter(t => {
+      const sl = t.s.toLowerCase();
+      const rl = t.r.toLowerCase();
+      if(mode === 'slang') return sl.includes(q);
+      if(mode === 'real') return rl.includes(q);
+      return sl.includes(q) || rl.includes(q);
+    });
+
+    if(!hits.length){
+      out.innerHTML = `<div class="res-hint">No match. Try 'plug', 'stash', 'playbook', or hit 🎲</div>`;
+      return;
+    }
+
+    // pick primary — exact match first, else first hit
+    const exact = hits.find(t =>
+      t.s.toLowerCase() === q || t.r.toLowerCase() === q
+    );
+    const main = exact || hits[0];
+
+    // decide direction
+    const inpLooksReal = main.r.toLowerCase().includes(q) && !main.s.toLowerCase().includes(q);
+    const fromLabel = inpLooksReal ? main.r : main.s;
+    const toLabel   = inpLooksReal ? main.s : main.r;
+
+    let html = `
+      <div class="res-card">
+        <span class="res-sl">${fromLabel}</span>
+        <span class="res-ar">→</span>
+        <span class="res-rl">${toLabel}</span>
+      </div>
+      <div class="res-use">"${main.u}"</div>
+    `;
+
+    // show other matches as chips
+    const others = hits.filter(t => t !== main).slice(0, 6);
+    if(others.length){
+      html += `<div class="res-multi">` + others.map(t =>
+        `<button class="res-chip" data-v="${t.s}">${t.s} · ${t.r}</button>`
+      ).join('') + `</div>`;
+    }
+
+    out.innerHTML = html;
+
+    // chip clicks
+    out.querySelectorAll('.res-chip').forEach(ch => {
+      ch.addEventListener('click', () => {
+        inp.value = ch.dataset.v;
+        run();
+      });
+    });
+  }
+})();
+
+/* ====== SCROLL REVEAL ====== */
+(() => {
+  const els = document.querySelectorAll('.reveal');
+  if(!('IntersectionObserver' in window)){
+    els.forEach(e => e.classList.add('on'));
+    return;
+  }
+  const io = new IntersectionObserver((entries) => {
+    entries.forEach(en => {
+      if(en.isIntersecting){
+        en.target.classList.add('on');
+        io.unobserve(en.target);
+      }
+    });
+  }, { threshold: 0.12, rootMargin: '0px 0px -60px 0px' });
+  els.forEach((e, i) => {
+    e.style.transitionDelay = Math.min(i * 40, 240) + 'ms';
+    io.observe(e);
+  });
+})();
+</script>
+</body>
+</html>
