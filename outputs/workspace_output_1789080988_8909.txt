@@ -1,0 +1,3 @@
+12:        > 💡 Check [ROADMAP.md](../ROADMAP.md) first — your idea might already
+15:        > per [GOVERNANCE.md](../../GOVERNANCE.md).
+85:        - label: I searched existing issues and ROADMAP.md and this is not a duplicate

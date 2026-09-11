@@ -1,0 +1,26 @@
+    for match in LINK_RE.finditer(text):
+        href = match.group(1).strip()
+        if href.startswith(("http://", "https://", "mailto:", "data:")):
+            continue
+        checked += 1
+        # GitHub-site-relative URLs (../../issues, ../../discussions, /login)
+        # resolve against github.com, not the local checkout — skip them.
+        if re.fullmatch(r"(/|\.\./)+[a-z-]+", href.split("#")[0]) and "#" not in href:
+            continue
+        # GitHub wiki pages are linked extensionless (Home, Getting-Started).
+        if md.parent.name == "wiki":
+            if target.endswith("/"):
+                continue  # directory-style wiki nav link
+            if not target.startswith((".", "/", "http")):
+                resolved = (md.parent / (target + ".md")).resolve()
+                if resolved.exists():
+                    continue
+        target_path = href.split("#")[0]
+
+print(f"Scanned {len(md_files)} markdown files, checked {checked} relative links.")
+if broken:
+    print(f"\n{len(broken)} BROKEN LINKS:")
+    for b in broken:
+        print(f"  {b}")
+    sys.exit(1)
+print("All relative links resolve. OK.")

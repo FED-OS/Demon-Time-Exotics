@@ -1,0 +1,5 @@
+=== stale check (should be empty) ===
+./ADR.md:147:(CLAUDE.md, AGENTS.md, todo.md).
+=== exit: 0 ===
+=== root md count ===
+24

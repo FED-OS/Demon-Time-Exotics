@@ -1,0 +1,16 @@
+App-Architecture.md
+Deploying-the-Landing-Site.md
+Development-Workflow.md
+Getting-Started.md
+Home.md
+Releasing-a-Version.md
+Troubleshooting.md
+_Footer.md
+_Sidebar.md
+=== check issue template links ===
+.github/ISSUE_TEMPLATE/bug_report.md:13:        > [SECURITY.md](../SECURITY.md) and email
+.github/ISSUE_TEMPLATE/bug_report.md:14:        > Bigmoney@demontimeexotics.com with `[SECURITY]` in the subject.
+.github/ISSUE_TEMPLATE/custom.md:15:        > Security topics NEVER go here — see [SECURITY.md](../SECURITY.md).
+.github/ISSUE_TEMPLATE/feature_request.md:12:        > 💡 Check [ROADMAP.md](../ROADMAP.md) first — your idea might already
+.github/ISSUE_TEMPLATE/feature_request.md:15:        > per [GOVERNANCE.md](../GOVERNANCE.md).
+.github/ISSUE_TEMPLATE/feature_request.md:85:        - label: I searched existing issues and ROADMAP.md and this is not a duplicate

@@ -1,0 +1,25 @@
+Scanned 73 markdown files, checked 165 relative links.
+
+22 BROKEN LINKS:
+  .github/ISSUE_TEMPLATE/bug_report.md -> ../SECURITY.md
+  .github/ISSUE_TEMPLATE/custom.md -> ../SECURITY.md
+  .github/ISSUE_TEMPLATE/feature_request.md -> ../ROADMAP.md
+  .github/ISSUE_TEMPLATE/feature_request.md -> ../GOVERNANCE.md
+  CONTRIBUTING.md -> ../../issues
+  CONTRIBUTING.md -> ../../discussions
+  CONTRIBUTING.md -> ../../issues
+  FAQ.md -> ../../discussions
+  FAQ.md -> ../../issues
+  FAQ.md -> ../../discussions
+  GOVERNANCE.md -> ../../discussions
+  NOTICE.md -> ../../issues
+  SUPPORT.md -> ../../issues
+  SUPPORT.md -> ../../discussions
+  USAGE.md -> ../../releases
+  wiki/_Sidebar.md -> Home
+  wiki/_Sidebar.md -> Getting-Started
+  wiki/_Sidebar.md -> Development-Workflow
+  wiki/_Sidebar.md -> App-Architecture
+  wiki/_Sidebar.md -> Releasing-a-Version
+  wiki/_Sidebar.md -> Deploying-the-Landing-Site
+  wiki/_Sidebar.md -> Troubleshooting

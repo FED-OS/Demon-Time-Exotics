@@ -1,0 +1,57 @@
+=== SUPPORT.md 5-12 ===
+1. **Check existing issues first** — [Issues](../../issues) — your problem may
+   already have a fix in progress.
+2. **Still stuck?** Open a new issue with the
+   **Bug Report** template ([.github/ISSUE_TEMPLATE/bug_report.md](.github/ISSUE_TEMPLATE/bug_report.md))
+   or the root-level [bug_report.md](bug_report.md) copy.
+3. **Include:** which app (`landing` / `tauri` / `electron` / `mobile`),
+   your OS + versions, exact steps to reproduce, expected vs actual behavior,
+   and screenshots/logs if you have them.
+
+=== SUPPORT.md 33-38 ===
+| Set up the environment | [INSTALL.md](INSTALL.md) |
+| Understand the build system | [BUILD.md](BUILD.md) |
+| Deploy / release | [DEPLOYMENT.md](DEPLOYMENT.md) |
+| Use the apps & site | [usage.md](usage.md) |
+| Project history | [CHANGELOG.md](CHANGELOG.md) |
+| What's next | [ROADMAP.md](ROADMAP.md) |
+
+=== FAQ.md 150-156 ===
+### I found a bug. Where do I report it?
+
+Use the Bug Report template: `.github/ISSUE_TEMPLATE/bug_report.md` —
+via the Issues tab (preferred) or the root-level `bug_report.md` copy.
+
+---
+
+
+=== INSTALL.md 246-252 ===
+
+---
+
+Next: [BUILD.md](BUILD.md) • [DEPLOYMENT.md](DEPLOYMENT.md) • [usage.md](usage.md)
+
+=== README.md 178-184 ===
+| [DEPLOYMENT.md](DEPLOYMENT.md) | Release & deployment pipeline |
+| [CHANGELOG.md](CHANGELOG.md) | Version history |
+| [ROADMAP.md](ROADMAP.md) | Where this is heading |
+| [usage.md](usage.md) | Using the apps & site |
+| [FAQ.md](FAQ.md) | Common questions |
+| [SUPPORT.md](SUPPORT.md) | Getting help |
+| [CONTRIBUTING.md](CONTRIBUTING.md) | How to contribute |
+
+=== ADR.md 145-149 ===
+**Context.** The project wants every conventional open-source doc present and
+discoverable (README, CONTRIBUTING, SECURITY, etc.) plus repo meta-docs
+(CLAUDE.md, AGENTS.md, todo.md).
+
+**Decision.** 27 root-level `.md` files (the standard set + project meta set),
+
+=== CHANGELOG.md 78-84 ===
+- 27 root-level docs: README, CONTRIBUTING, SECURITY, CHANGELOG, FAQ, SUPPORT,
+  INSTALL, BUILD, DEPLOYMENT, ROADMAP, ADR, AUTHORS, MAINTAINERS, GOVERNANCE,
+  PRICING, COPYING, CITATIONS, NOTICE, SUMMARY, usage, CLAUDE.md, AGENTS.md,
+  todo.md, PR template, bug report, feature request
+- `docs/` hub, `wiki/` content source, `discussion/` templates, `prompts/` templates
+
+**🎨 Branding**

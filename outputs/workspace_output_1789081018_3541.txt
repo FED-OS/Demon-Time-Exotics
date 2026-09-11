@@ -1,0 +1,15 @@
+package.json
+packages
+pnpm-workspace.yaml
+prompts
+social-image.png
+styles.css
+tooling
+tsconfig.base.json
+turbo.json
+wiki
+=== key files present ===
+tooling/scripts/check_links.py
+.github/ISSUE_TEMPLATE/feature_request.md
+TODO.md
+USAGE.md

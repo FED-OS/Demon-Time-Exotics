@@ -1,0 +1,45 @@
+=== junk leak check (should be empty) ===
+Archive:  demon-time-exotics-monorepo.zip
+=== clean ===
+
+=== top-level dirs/files ===
+----
+.editorconfig
+.env.example
+.gitattributes
+.github
+.gitignore
+.npmrc
+.nvmrc
+ADR.md
+AGENTS.md
+AUTHORS.md
+BUILD.md
+CHANGELOG.md
+CITATIONS.md
+CLAUDE.md
+CODE_OF_CONDUCT.md
+CONTRIBUTING.md
+COPYING.md
+DEPLOYMENT.md
+FAQ.md
+GOVERNANCE.md
+INSTALL.md
+LICENSE
+MAINTAINERS.md
+Makefile
+NOTICE.md
+Name
+PRICING.md
+README.md
+ROADMAP.md
+SECURITY.md
+SUMMARY.md
+SUPPORT.md
+TODO.md
+USAGE.md
+apps
+discussion
+docs
+package.json
+packages

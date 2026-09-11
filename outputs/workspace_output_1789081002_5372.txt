@@ -1,0 +1,4 @@
+=== zip built ===
+-rw-r--r-- 1 root root 20181059 Sep 10 22:56 demon-time-exotics-monorepo.zip
+=== entry count ===
+ 20964203                     365 files

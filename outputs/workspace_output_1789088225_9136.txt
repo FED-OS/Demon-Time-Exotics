@@ -1,0 +1,33 @@
+total 36
+drwxr-xr-x 2 root root 4096 Sep 10 21:13 .
+drwxr-xr-x 4 root root 4096 Sep 10 21:13 ..
+-rw-r--r-- 1 root root 3750 Sep 10 21:13 build.yml
+-rw-r--r-- 1 root root 1814 Sep 10 21:13 ci.yml
+-rw-r--r-- 1 root root 1082 Sep 10 21:13 codeql.yml
+-rw-r--r-- 1 root root 1252 Sep 10 21:13 deploy-landing.yml
+-rw-r--r-- 1 root root 2159 Sep 10 21:13 release-electron.yml
+-rw-r--r-- 1 root root 2165 Sep 10 21:13 release-mobile.yml
+-rw-r--r-- 1 root root 2243 Sep 10 21:13 release-tauri.yml
+=== any build.yml anywhere ===
+./.github/workflows/build.yml
+=== workflow references in docs ===
+./docs/architecture/decisions.md:27:**Status: accepted.** One workflow per surface (`deploy-landing.yml`, `release-tauri.yml` with its four-target matrix, `release-electron.yml`, `release-mobile.yml`, plus `build.yml` and `ci.yml` gates, `codeql.yml` scanning) triggered on version tags (`v*`). Releases are cut only by pushing a tag — never by a branch push — which keeps `main` always deployable. The `release.js` script exists to make the tag-cutting ceremony (version lockstep bump, CHANGELOG fold, commit + tag) a one-command, mistake-proof operation.
+./docs/architecture/build-pipeline.md:3:This page walks the full path a change travels: local checks → CI gates → artifact builds → tag-triggered releases → landing deployment. The pipeline is GitHub Actions all the way, seven workflow files under `.github/workflows/`, orchestrated locally by `tooling/scripts/`.
+./docs/architecture/build-pipeline.md:15:**`ci.yml` — CI — Lint / Typecheck / Test** runs on every push and pull request. It installs pnpm, restores the workspace via the store cache, and runs the `lint`, `typecheck` and `test` Turbo tasks across the repo. This is the quality gate; a red CI blocks the merge, full stop.
+./docs/architecture/build-pipeline.md:17:**`build.yml` — Build All Platforms** runs on push to the default branch (and manually). It is the artifact proof: it builds all four surfaces in a matrix that includes the native toolchains, producing the same `BuildOutcome` reporting the local `build-all.js` prints. If a surface's artifact is missing, the workflow fails loudly. It is the "it actually builds" gate that sits above lint/typecheck — CI proves correctness, build proves existence.
+./docs/architecture/build-pipeline.md:19:**`codeql.yml` — CodeQL Security Scan** runs on push and weekly on schedule. It analyzes the JavaScript/TypeScript and Rust sources for known vulnerability classes. It pairs with `ci.yml`: CI catches the mistakes CodeQL can't see, CodeQL catches the patterns CI doesn't look for.
+./docs/architecture/build-pipeline.md:29:The division of labor: `ci.yml` is the always-on quality gate, `build.yml` is the artifact proof, `codeql.yml` is the safety net, `deploy-landing.yml` is the standing deployment, and the three release workflows are the tag-triggered distributors.
+./docs/architecture/build-pipeline.md:43:The pipeline encodes three deliberate bets. First, that the artifact contract (concrete expected paths per surface) beats "the build script exited 0" as a definition of success — the `build-all.js` and `build.yml` pair both report against `BuildOutcome` from `@dte/shared` so local and CI agree on what "built" means. Second, that the release ceremony should be one command with hard preconditions, not a wiki page of manual steps — thirteen manifests and a changelog fold are exactly the kind of chore humans get wrong and scripts get right. Third, that distributors should be tag-triggered rather than always-on — building installers on every push burns CI minutes for nothing; the tag is the deliberate "this is a release" signal.
+./docs/architecture/overview.md:23:GitHub Actions carries the repo from commit to shipped artifacts. `build.yml` runs the four-surface build matrix; `ci.yml` gates every PR on lint, typecheck, and the web builds; `deploy-landing.yml` publishes the landing dist to GitHub Pages on main; `release-tauri.yml` runs the four-target matrix (macOS, Linux AppImage/deb, Windows NSIS/MSI) through tauri-action; `release-electron.yml` builds NSIS/dmg/AppImage/deb installers with electron-builder; `release-mobile.yml` drives EAS builds for Android and iOS; `codeql.yml` scans for security issues. The `release.js` tooling script orchestrates the local side: it verifies a clean tree, runs the quality gates, bumps every workspace manifest in lockstep, moves the CHANGELOG "Unreleased" section under the new version, and commits + tags — pushing the tag is what arms the release workflows.
+./ADR.md:111:**Decision.** GitHub Actions workflows: `build.yml` (verify matrix),
+./ADR.md:113:`release-mobile.yml` (tag-triggered), `codeql.yml` (security), `ci.yml`
+./CHANGELOG.md:68:**🔧 CI/CD (`.github/workflows/`)**
+./CHANGELOG.md:69:- `build.yml` — all-platform build matrix
+./CHANGELOG.md:70:- `ci.yml` — lint, typecheck, test pipeline
+./COPYING.md:38:- Build scripts, CI workflow definitions in `.github/workflows/*`
+./BUILD.md:49:- **Deploy:** automatic via `.github/workflows/deploy-landing.yml` on push to
+./BUILD.md:171:CI (`.github/workflows/build.yml`) builds every target on a matrix:
+./AGENTS.md:109:- ❌ Editing CI workflows (`.github/workflows/*`) without flagging for review
+./SECURITY.md:42:- GitHub Actions workflows (`.github/workflows/*`)
+./DEPLOYMENT.md:20:**Workflow:** `.github/workflows/deploy-landing.yml`
+./DEPLOYMENT.md:47:**Workflow:** `.github/workflows/release-tauri.yml`

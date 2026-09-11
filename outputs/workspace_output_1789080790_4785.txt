@@ -1,0 +1,70 @@
+=== outputs/ ===
+total 32
+drwxr-xr-x  2 root root 4096 Sep 10 22:53 .
+drwxr-xr-x 15 user user 4096 Sep 10 22:52 ..
+-rw-r--r--  1 root root 2233 Sep 10 22:51 workspace_output_1789080661_4812.txt
+-rw-r--r--  1 root root 1344 Sep 10 22:52 workspace_output_1789080742_5768.txt
+-rw-r--r--  1 root root 2306 Sep 10 22:52 workspace_output_1789080747_651.txt
+-rw-r--r--  1 root root 1151 Sep 10 22:52 workspace_output_1789080766_3588.txt
+-rw-r--r--  1 root root  369 Sep 10 22:52 workspace_output_1789080772_2622.txt
+-rw-r--r--  1 root root   17 Sep 10 22:53 workspace_output_1789080790_4785.txt
+
+=== summarized_conversations/ ===
+total 340
+drwxr-xr-x  2 root root   4096 Sep 10 22:52 .
+drwxr-xr-x 15 user user   4096 Sep 10 22:52 ..
+-rw-r--r--  1 root root 337039 Sep 10 22:52 original_conversation_1789080732_342.txt
+
+=== root non-standard files ===
+drwxr-xr-x  4 user user     4096 Sep 10 22:35 .agent_hooks
+drwxr-xr-x 10 root root     4096 Sep 10 22:38 .browser_data
+-rw-r--r--  1 root root      240 Sep 10 21:07 .editorconfig
+-rw-r--r--  1 root root     1431 Sep 10 21:12 .env.example
+-rw-r--r--  1 root root      154 Sep 10 21:07 .gitattributes
+-rw-r--r--  1 root root      636 Sep 10 21:07 .gitignore
+-rw-r--r--  1 root root       77 Sep 10 21:07 .npmrc
+-rw-r--r--  1 root root        9 Sep 10 21:07 .nvmrc
+drwxr-xr-x  3 root root     4096 Jun 22 03:37 .psiphon_data
+-rw-r--r--  1 root root     1075 Sep 10 21:07 LICENSE
+-rw-r--r--  1 root root      492 Sep 10 21:07 Makefile
+-rw-r--r--  1 root root 20183743 Sep 10 22:42 demon-time-exotics-monorepo.zip
+drwxr-xr-x  2 root root     4096 Sep 10 22:53 outputs
+-rw-r--r--  1 root root     1816 Sep 10 21:36 package.json
+-rw-r--r--  1 root root       80 Sep 10 21:06 pnpm-workspace.yaml
+-rw-r--r--  1 root root  1501829 Sep 10 22:22 social-image.png
+-rw-r--r--  1 root root      917 Sep 10 21:07 styles.css
+drwxr-xr-x  2 root root     4096 Sep 10 22:52 summarized_conversations
+-rw-r--r--  1 root root      923 Sep 10 21:06 tsconfig.base.json
+-rw-r--r--  1 root root      585 Sep 10 21:06 turbo.json
+
+=== CHANGELOG head ===
+# Changelog
+
+All notable changes to the **Demon Time Exotics** monorepo are documented in
+this file.
+
+The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
+and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
+
+## [Unreleased]
+
+### Planned
+
+- Live stream embed section on landing site
+- Member-only content gating in Tauri/Electron apps
+- Push notifications for breaking drama in mobile app
+- Dark/light theme toggle across all apps
+- Comment section integration (YouTube API)
+
+## [1.0.0] — 2025-09-10
+
+### 🎉 Initial Release — THE MESSY SHOW EMPIRE 💪🏾😈🔥
+
+One repo. Every platform. The full Demon Time Exotics digital ecosystem.
+
+### Added
+
+**🌐 Landing Site (`apps/landing`)**
+- Eye-catching GitHub Pages site with fire/ember theme
+- Hero section with brand tagline and social proof stats
+- Top content showcase (top 5 performing videos)

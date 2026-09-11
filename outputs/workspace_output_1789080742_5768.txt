@@ -1,0 +1,8 @@
+README.md:181:| [usage.md](usage.md) | Using the apps & site |
+SUPPORT.md:9:   or the root-level [bug_report.md](bug_report.md) copy.
+SUPPORT.md:36:| Use the apps & site | [usage.md](usage.md) |
+FAQ.md:153:via the Issues tab (preferred) or the root-level `bug_report.md` copy.
+INSTALL.md:249:Next: [BUILD.md](BUILD.md) • [DEPLOYMENT.md](DEPLOYMENT.md) • [usage.md](usage.md)
+ADR.md:147:(CLAUDE.md, AGENTS.md, todo.md).
+CHANGELOG.md:81:  todo.md, PR template, bug report, feature request
+docs/index.md:27:The repo root carries the standard project records — `README.md` (front door), `CONTRIBUTING.md` (the ninety-second contribution flow), `SECURITY.md` (vulnerability reporting), `CODE_OF_CONDUCT.md`, `CHANGELOG.md` (release history), `ROADMAP.md` (where this is going), `FAQ.md` (common questions), `SUPPORT.md` (where to get help), `INSTALL.md` and `BUILD.md` (setup and build), `DEPLOYMENT.md` (shipping to the four destinations), `GOVERNANCE.md` and `MAINTAINERS.md` (who decides), `ADR.md` (the pointer into the decision records), `AGENTS.md` and `CLAUDE.md` (AI-assistant ground rules), `SUMMARY.md`, `NOTICE.md`, `COPYING.md`, `AUTHORS.md`, and `CITATIONS.md` (attribution and license records), plus the issue templates and `PRICING.md` (sponsorship tiers). The root `usage.md` and `usage.md` companions cover everyday commands.

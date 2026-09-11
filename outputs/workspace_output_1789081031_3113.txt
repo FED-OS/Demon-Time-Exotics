@@ -1,0 +1,14 @@
+- [ ] Affiliate grid from the channel's REI/Sweetwater/Best Buy deals
+- [ ] i18n pass (es-MX first) for the mobile + landing apps
+- [ ] Open-source program applications (see COMMUNITY.md checklist)
+
+## Doing (right now)
+
+- [ ] Filename cleanup — remove upload junk + redundant root twins, normalize naming (usage.md → USAGE.md, todo.md → TODO.md), update all doc references, rebuild deliverable zip
+
+## Icebox (someday / maybe)
+
+- [ ] Live co-viewing sync (Twitch integration)
+- [ ] Community poll widget wired to YouTube polls
+- [ ] Shorts-first mobile feed with swipe gestures
+- [ ] Native audio podcast player (background play)

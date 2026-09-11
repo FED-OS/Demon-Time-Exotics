@@ -1,0 +1,171 @@
+=== in zip? ===
+        0  2026-09-10 21:13   .github/workflows/
+     2159  2026-09-10 21:13   .github/workflows/release-electron.yml
+     1082  2026-09-10 21:13   .github/workflows/codeql.yml
+     1252  2026-09-10 21:13   .github/workflows/deploy-landing.yml
+     2165  2026-09-10 21:13   .github/workflows/release-mobile.yml
+     3750  2026-09-10 21:13   .github/workflows/build.yml
+     2243  2026-09-10 21:13   .github/workflows/release-tauri.yml
+     1814  2026-09-10 21:13   .github/workflows/ci.yml
+
+=== file content ===
+name: Build All Platforms
+
+on:
+  push:
+    branches: [main]
+    paths-ignore:
+      - "**.md"
+      - "docs/**"
+      - "wiki/**"
+      - "discussion/**"
+      - "prompts/**"
+  pull_request:
+    branches: [main]
+    paths-ignore:
+      - "**.md"
+      - "docs/**"
+      - "wiki/**"
+      - "discussion/**"
+      - "prompts/**"
+  workflow_dispatch:
+
+concurrency:
+  group: build-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  web:
+    name: Landing (GitHub Pages site)
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: pnpm/action-setup@v4
+        with:
+          version: 9
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version-file: .nvmrc
+          cache: pnpm
+
+      - name: Install
+        run: pnpm install --frozen-lockfile
+
+      - name: Build landing
+        run: pnpm --filter @dte/landing build
+
+      - uses: actions/upload-artifact@v4
+        with:
+          name: landing-dist
+          path: apps/landing/dist/
+          retention-days: 7
+
+  electron:
+    name: Electron (${{ matrix.os }})
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [ubuntu-latest, windows-latest, macos-latest]
+    runs-on: ${{ matrix.os }}
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: pnpm/action-setup@v4
+        with:
+          version: 9
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version-file: .nvmrc
+          cache: pnpm
+
+      - name: Install
+        run: pnpm install --frozen-lockfile
+
+      - name: Build Electron
+        run: pnpm --filter @dte/electron build
+
+      - uses: actions/upload-artifact@v4
+        with:
+          name: electron-${{ matrix.os }}
+          path: apps/electron/release/*
+          retention-days: 7
+          if-no-files-found: ignore
+
+  tauri:
+    name: Tauri (${{ matrix.os }})
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [ubuntu-latest, windows-latest, macos-latest]
+    runs-on: ${{ matrix.os }}
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Install Rust stable
+        uses: dtolnay/rust-toolchain@stable
+
+      - name: Rust cache
+        uses: swatinem/rust-cache@v2
+        with:
+          workspaces: apps/tauri/src-tauri -> target
+
+      - name: Install Linux deps
+        if: matrix.os == 'ubuntu-latest'
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y libwebkit2gtk-4.1-dev build-essential curl wget file libxdo-dev libssl-dev libayatana-appindicator3-dev librsvg2-dev
+
+      - uses: pnpm/action-setup@v4
+        with:
+          version: 9
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version-file: .nvmrc
+          cache: pnpm
+
+      - name: Install
+        run: pnpm install --frozen-lockfile
+
+      - name: Build Tauri
+        run: pnpm --filter @dte/tauri tauri build --no-bundle
+
+      - uses: actions/upload-artifact@v4
+        with:
+          name: tauri-${{ matrix.os }}
+          path: |
+            apps/tauri/src-tauri/target/release/demon-time-exotics*
+            apps/tauri/src-tauri/target/release/bundle/**
+          retention-days: 7
+          if-no-files-found: ignore
+
+  mobile:
+    name: Mobile (Expo export)
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: pnpm/action-setup@v4
+        with:
+          version: 9
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version-file: .nvmrc
+          cache: pnpm
+
+      - name: Install
+        run: pnpm install --frozen-lockfile
+
+      - name: Export mobile bundle
+        run: pnpm --filter @dte/mobile export
+
+      - uses: actions/upload-artifact@v4
+        with:
+          name: mobile-dist
+          path: apps/mobile/dist/
+          retention-days: 7
+          if-no-files-found: ignore

@@ -1,0 +1,10 @@
+20:## Shipped (v1.0.0)
+## Shipped (v1.0.0)
+
+- [x] Initialize the pnpm workspace and Turborepo pipeline
+- [x] Ship the landing page to GitHub Pages
+- [x] First Tauri + Electron desktop builds
+- [x] First EAS preview build for mobile
+- [x] Release scripts, generators, clean scripts (tooling/scripts)
+- [x] Architecture decision records (ADR.md + docs/architecture/decisions.md)
+- [x] Official brand logo swap across all apps and packages

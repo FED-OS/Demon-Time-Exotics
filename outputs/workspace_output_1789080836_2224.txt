@@ -1,0 +1,35 @@
+
+---
+
+## ADR-0008 — Root-level flat documentation suite
+
+**Status:** Accepted • **Date:** 2025-09-10
+
+**Context.** The project wants every conventional open-source doc present and
+discoverable (README, CONTRIBUTING, SECURITY, etc.) plus repo meta-docs
+(CLAUDE.md, AGENTS.md, todo.md).
+
+**Decision.** 27 root-level `.md` files (the standard set + project meta set),
+with deeper content in `docs/`, `wiki/`, `discussion/`, and `prompts/`.
+
+**Consequences.**
+- ✅ Everything GitHub surfaces (SECURITY.md, CONTRIBUTING.md, etc.) at root
+- ✅ AI agents read CLAUDE.md/AGENTS.md from root automatically
+- ⚠️ Root is busy — `docs/` hub links keep navigation sane
+
+---
+
+======
+- `release-mobile.yml` — EAS Android/iOS builds
+- `codeql.yml` — security scanning
+
+**📚 Documentation (root `.md` files)**
+- 27 root-level docs: README, CONTRIBUTING, SECURITY, CHANGELOG, FAQ, SUPPORT,
+  INSTALL, BUILD, DEPLOYMENT, ROADMAP, ADR, AUTHORS, MAINTAINERS, GOVERNANCE,
+  PRICING, COPYING, CITATIONS, NOTICE, SUMMARY, usage, CLAUDE.md, AGENTS.md,
+  todo.md, PR template, bug report, feature request
+- `docs/` hub, `wiki/` content source, `discussion/` templates, `prompts/` templates
+
+**🎨 Branding**
+- Social preview image (1280×640) for GitHub repository
+- Demon logo / favicon (16–512px + .ico multi-res)

@@ -1,0 +1,15 @@
+./SUPPORT.md:9:   or the root-level [bug_report.md](bug_report.md) copy.
+./SUPPORT.md:36:| Use the apps & site | [usage.md](usage.md) |
+./docs/index.md:27:The repo root carries the standard project records — `README.md` (front door), `CONTRIBUTING.md` (the ninety-second contribution flow), `SECURITY.md` (vulnerability reporting), `CODE_OF_CONDUCT.md`, `CHANGELOG.md` (release history), `ROADMAP.md` (where this is going), `FAQ.md` (common questions), `SUPPORT.md` (where to get help), `INSTALL.md` and `BUILD.md` (setup and build), `DEPLOYMENT.md` (shipping to the four destinations), `GOVERNANCE.md` and `MAINTAINERS.md` (who decides), `ADR.md` (the pointer into the decision records), `AGENTS.md` and `CLAUDE.md` (AI-assistant ground rules), `SUMMARY.md`, `NOTICE.md`, `COPYING.md`, `AUTHORS.md`, and `CITATIONS.md` (attribution and license records), plus the issue templates and `PRICING.md` (sponsorship tiers). The root `usage.md` and `usage.md` companions cover everyday commands.
+./ROADMAP.md:16:- [x] Full documentation set (27 root docs + docs/ + wiki/ + discussion/)
+./ADR.md:147:(CLAUDE.md, AGENTS.md, todo.md).
+./ADR.md:149:**Decision.** 27 root-level `.md` files (the standard set + project meta set),
+./CHANGELOG.md:78:- 27 root-level docs: README, CONTRIBUTING, SECURITY, CHANGELOG, FAQ, SUPPORT,
+./CHANGELOG.md:81:  todo.md, PR template, bug report, feature request
+./TODO.md:51:- [ ] Filename cleanup — remove upload junk + redundant root twins, normalize naming (usage.md → USAGE.md, todo.md → TODO.md), update all doc references, rebuild deliverable zip
+./INSTALL.md:249:Next: [BUILD.md](BUILD.md) • [DEPLOYMENT.md](DEPLOYMENT.md) • [usage.md](usage.md)
+./AGENTS.md:92:No build needed, but keep cross-links valid (27 root docs link each other
+./FAQ.md:53:- 📚 docs, wiki, discussion templates, and 27 root-level documentation files
+./FAQ.md:153:via the Issues tab (preferred) or the root-level `bug_report.md` copy.
+./CLAUDE.md:104:docs/, wiki/, discussion/, prompts/ (content areas). 27 root docs total —
+./README.md:181:| [usage.md](usage.md) | Using the apps & site |

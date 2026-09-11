@@ -1,0 +1,6 @@
+147:(CLAUDE.md, AGENTS.md, todo.md).
+---- raw bytes of line 147 ----
+0000000   (   C   L   A   U   D   E   .   m   d   ,       A   G   E   N
+0000020   T   S   .   m   d   ,       t   o   d   o   .   m   d   )   .
+0000040  \n
+0000041
