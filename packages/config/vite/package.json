@@ -19,7 +19,7 @@
     "clean": "rm -rf .turbo"
   },
   "dependencies": {
-    "vite": "^5.4.11"
+    "vite": "^8.3.0"
   },
   "devDependencies": {
     "@dte/config-typescript": "workspace:*",
